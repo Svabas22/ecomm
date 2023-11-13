@@ -12,36 +12,51 @@ function Header() {
     navigate("/register");
   }
   console.warn(user);
+
   return (
     <>
-      <div>
-        <Navbar bg="dark" data-bs-theme="dark">
-          <Container>
-            <Navbar.Brand href="/home">E-Comm</Navbar.Brand>
-            <Nav className="me-auto navbar_wrapper">
+      <Navbar className="navbar">
+        <Container className="navbar_wrapper">
+          <Navbar.Brand href="/home">
+            <img src="./favicon.ico"></img>
+          </Navbar.Brand>
+          <Nav className="test">
+            <div className="search">
+              <input className="search-input" placeholder="Search"></input>
+              <img src="54481.png"></img>
+            </div>
+            <div className="navbar-buttons">
               {localStorage.getItem("user-info") ? ( // IF
                 <>
-                  <Link to="/add">Add</Link>
-                  <Link to="/list">List</Link>
+                  <Link className="navbar-link" to="/add">
+                    <button className="navbar-btn">Add to list</button>
+                  </Link>
+                  <Link to="/list">
+                    <button className="navbar-btn">List view</button>
+                  </Link>
                 </>
               ) : (
                 // ELSE
                 <>
-                  <Link to="/login">Login</Link>
-                  <Link to="/register">Register</Link>
+                  <Link to="/login">
+                    <button className="navbar-btn">Login</button>
+                  </Link>
+                  <Link to="/register">
+                    <button className="navbar-btn">Register</button>
+                  </Link>
                 </>
               )}
+            </div>
+          </Nav>
+          {localStorage.getItem("user-info") ? (
+            <Nav>
+              <NavDropdown title={user && user.name}>
+                <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
+              </NavDropdown>
             </Nav>
-            {localStorage.getItem("user-info") ? (
-              <Nav>
-                <NavDropdown title={user && user.name}>
-                  <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
-                </NavDropdown>
-              </Nav>
-            ) : null}
-          </Container>
-        </Navbar>
-      </div>
+          ) : null}
+        </Container>
+      </Navbar>
     </>
   );
 }

@@ -9,6 +9,7 @@ import Home from "./Components/Home";
 import AddAccount from "./Components/AddAccount";
 import AccountList from "./Components/AccountList";
 import Protected from "./Components/Protected";
+import Footer from "./Components/Footer";
 function App() {
   return (
     <div className="App">
@@ -17,10 +18,13 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/add" element={<Protected Cmp={AddAccount} />} />
+          <Route path="/add" element={<AddAccount />} />
           <Route path="/list" element={<Protected Cmp={AccountList} />} />
         </Routes>
       </BrowserRouter>
+
+      <div>body</div>
+      <Footer />
     </div>
   );
 }
