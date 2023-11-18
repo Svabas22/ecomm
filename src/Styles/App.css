@@ -1,0 +1,14 @@
+.App {
+  text-align: center;
+}
+
+.body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  color: #303030;
+  font-family: Roboto Flex,sans-serif;
+}
+.ul{
+  list-style: none;
+}

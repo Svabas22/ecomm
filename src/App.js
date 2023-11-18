@@ -1,5 +1,8 @@
 import logo from "./logo.svg";
-import "./App.css";
+import "./src/Styles/App.css";
+import "./src/Styles/BuyAccount.css";
+import "./src/Styles/Navbar.css";
+import "./src/Styles/Footer.css";
 import { Button } from "react-bootstrap";
 import Header from "./Components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -10,6 +13,8 @@ import AddAccount from "./Components/AddAccount";
 import AccountList from "./Components/AccountList";
 import Protected from "./Components/Protected";
 import Footer from "./Components/Footer";
+
+import BuyAccount from "./Components/BuyAccount";
 function App() {
   return (
     <div className="App">
@@ -20,10 +25,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/add" element={<AddAccount />} />
           <Route path="/list" element={<Protected Cmp={AccountList} />} />
+          <Route path="/buy" element={<BuyAccount />} />
         </Routes>
       </BrowserRouter>
-
-      <div>body</div>
       <Footer />
     </div>
   );

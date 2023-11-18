@@ -1,0 +1,32 @@
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    flex: 10000 1 0%;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 50px;
+    padding-top: 20px;
+    border-radius: 10px;
+    border: 1px solid red;
+}
+
+.account-title{
+    display: inline;
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: bold;
+    font-weight: 600;
+    line-height: 2rem;
+    padding-top: 30px;
+}
+
+.account-info{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    min-width: 0;
+    max-width: 100%;
+    font-size: 1.875rem;
+    border: solid 1px rgb(196, 189, 189);
+    border-radius: 12px;
+}

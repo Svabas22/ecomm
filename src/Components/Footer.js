@@ -2,6 +2,12 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Link } from "react-router-dom";
 function Footer() {
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <>
       <div className="footer">
@@ -10,9 +16,9 @@ function Footer() {
             <h2>Kontaktai</h2>
           </a>
           <br />
-          <a href="#home">
-            <h3>Home</h3>
-          </a>
+          <div className="footer-btn" onClick={goToTop}>
+            <h3>To top</h3>
+          </div>
         </div>
       </div>
     </>

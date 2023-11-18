@@ -4,6 +4,7 @@ function Home() {
   return (
     <>
       <Header />
+      <div className="body">body</div>
     </>
   );
 }
