@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
-import "./src/Styles/App.css";
-import "./src/Styles/BuyAccount.css";
-import "./src/Styles/Navbar.css";
-import "./src/Styles/Footer.css";
+import "./Styles/App.css";
+import "./Styles/BuyAccount.css";
+import "./Styles/Header.css";
+import "./Styles/Footer.css";
 import { Button } from "react-bootstrap";
 import Header from "./Components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

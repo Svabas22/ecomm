@@ -1,17 +1,23 @@
-.row{
+.upper-content{
     display: flex;
-    flex-wrap: wrap;
-    flex: 10000 1 0%;
-    flex-direction: column;
-    text-align: left;
-    padding-left: 50px;
+    flex-direction: row;
     padding-top: 20px;
-    border-radius: 10px;
-    border: 1px solid red;
 }
 
+.col-upper-content{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 350px;
+    padding-top: 20px;
+    border-radius: 10px;
+    flex-grow: 0;
+    width: fit-content;
+}
+
+
+
 .account-title{
-    display: inline;
     font-size: 18px;
     margin-bottom: 16px;
     font-weight: bold;
@@ -23,10 +29,47 @@
 .account-info{
     display: flex;
     flex-direction: column;
-    width: auto;
-    min-width: 0;
-    max-width: 100%;
+    flex-shrink: 0;
     font-size: 1.875rem;
     border: solid 1px rgb(196, 189, 189);
     border-radius: 12px;
 }
+
+.account-info-h2{
+    margin-bottom: 24px;
+    margin-top: 24px;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.25rem;
+}
+
+.account-info-p{
+    font-size: 14px;
+}
+
+.right-upper-content{
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+}
+
+.right-upper-content h2{
+    padding-left: 200px;
+    padding-right: 200px;
+    text-align: center;
+}
+.col-right-upper-content{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-top: 20px;
+    border-radius: 10px;
+    background-color: rgb(211, 212, 207);
+}
+
+.row-price-right-upper-content{
+    display: flex;
+    flex-direction: row;
+  justify-content: space-between;
+}
+
