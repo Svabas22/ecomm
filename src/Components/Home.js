@@ -3,8 +3,10 @@ import Header from "./Header";
 function Home() {
   return (
     <>
-      <Header />
-      <div className="body">body</div>
+      <div className="main">
+        <Header />
+        <div className="body">body</div>
+      </div>
     </>
   );
 }

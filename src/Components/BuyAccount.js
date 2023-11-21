@@ -35,10 +35,15 @@ function BuyAccount() {
                   XX <span>eur</span>
                 </h2>
               </div>
-              <button>BUY NOW</button>
+              <button className="buy-btn">BUY NOW</button>
             </div>
           </div>
         </div>
+      </div>
+      <div className="wrapper">
+        <div className="box a">A</div>
+        <div className="box b">B</div>
+        <div className="box c">C</div>
       </div>
     </>
   );

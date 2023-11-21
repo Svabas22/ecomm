@@ -8,14 +8,12 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    padding-left: 350px;
+    padding-left: 150px;
     padding-top: 20px;
     border-radius: 10px;
     flex-grow: 0;
     width: fit-content;
 }
-
-
 
 .account-title{
     font-size: 18px;
@@ -51,6 +49,7 @@
     display: flex;
     flex-direction: column;
     padding-left: 20px;
+    padding-right: 20px;
 }
 
 .right-upper-content h2{
@@ -61,15 +60,48 @@
 .col-right-upper-content{
     display: flex;
     flex-direction: column;
-    text-align: left;
+    text-align: center;
     padding-top: 20px;
     border-radius: 10px;
-    background-color: rgb(211, 212, 207);
+    background-color: rgb(233, 234, 229);
 }
 
 .row-price-right-upper-content{
-    display: flex;
-    flex-direction: row;
+    display: grid;
   justify-content: space-between;
 }
 
+.buy-btn{
+    align-items: center;
+    width: fit-content
+}
+
+.wrapper{
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 100px 100px 100px;
+    
+}
+
+.box{
+    background-color: #9e9d9d;
+    border: 1px solid rgb(103, 106, 103);
+    border-radius: 5px;
+}
+
+.a{
+    grid-column: 1 / 3;
+    grid-row: 1;
+}
+.b {
+    grid-column: 3 ;
+    grid-row: 1 / 3;
+  }
+  .c {
+    grid-column: 1 ;
+    grid-row: 2 ;
+  }
+
+.title-product-info{
+    font-size: 18px;
+}

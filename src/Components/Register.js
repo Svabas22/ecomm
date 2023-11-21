@@ -31,36 +31,38 @@ function Register() {
 
   return (
     <>
-      <Header />
-      <div className="col-sm-6 offset-sm-3">
-        <h1>Register page</h1>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          className="form-control"
-          placeholder="name"
-        />
-        <br />
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          className="form-control"
-          placeholder="password"
-        />
-        <br />
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="form-control"
-          placeholder="email"
-        />
-        <br />
-        <button onClick={signUp} className="btn btn-primary">
-          Sign up
-        </button>
+      <div className="body">
+        <Header />
+        <div className="col-sm-6 offset-sm-3">
+          <h1>Register page</h1>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="form-control"
+            placeholder="name"
+          />
+          <br />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="form-control"
+            placeholder="password"
+          />
+          <br />
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="form-control"
+            placeholder="email"
+          />
+          <br />
+          <button onClick={signUp} className="btn btn-primary">
+            Sign up
+          </button>
+        </div>
       </div>
     </>
   );

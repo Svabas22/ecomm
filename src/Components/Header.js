@@ -15,9 +15,9 @@ function Header() {
 
   return (
     <>
-      <Navbar className="navbar">
+      <div className="navbar">
         <div className="navbar_wrapper">
-          <Container className="navbar_wrapper">
+          <div className="navbar_wrapper">
             <div className="navbar-home-icon">
               <Link to="/home">
                 <img src="../favicon.ico"></img>
@@ -63,9 +63,9 @@ function Header() {
                 </NavDropdown>
               </Nav>
             ) : null}
-          </Container>
+          </div>
         </div>
-      </Navbar>
+      </div>
     </>
   );
 }
