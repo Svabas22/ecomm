@@ -12,7 +12,7 @@ function Footer() {
     <>
       <div className="footer">
         <div className="footer-feed">
-          <a href="mailto:ugnius.kerulis@knf.stud.vu.lt">
+          <a href="mailto:">
             <h2>Kontaktai</h2>
           </a>
           <br />

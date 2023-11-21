@@ -2,10 +2,14 @@
   text-align: center;
 }
 
+.main{
+  width: 100vw;
+  height: 100vh;
+}
+
 .body {
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  min-width: fit-content;
   color: #303030;
   font-family: Roboto Flex,sans-serif;
 }

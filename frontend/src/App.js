@@ -13,7 +13,6 @@ import AddAccount from "./Components/AddAccount";
 import AccountList from "./Components/AccountList";
 import Protected from "./Components/Protected";
 import Footer from "./Components/Footer";
-
 import BuyAccount from "./Components/BuyAccount";
 function App() {
   return (

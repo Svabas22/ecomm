@@ -1,13 +1,16 @@
 
   .navbar{
     background-color: #f0eeeee0;
-    border-bottom:double;
-    
+    box-shadow: 0 4px 2px -2.5px gray;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
   }
   
   .navbar_wrapper{
   display: flex;
   flex-direction: row;
+  justify-content: center;
   width: 100%;
   }
   
@@ -23,19 +26,17 @@
   
   
   .search {
-    display: flex;
-    overflow : clip;
-    padding: 0.6rem 0.6rem;
-    min-width: 600px;
-    height: 60px;
-    border-radius: 3rem;
-    background: #fff;
-    border: 1px solid #d3d0d0;
+  overflow : clip;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border-radius: 20px;
+  background-color: #fff;
   }
   
   .search-input {
     width: auto;
-    flex: 1;
     border: none;
     font-size: 1.5rem;
     font-family: var(--font-raleway);
@@ -66,14 +67,16 @@
   }
   
   .navbar-buttons{
+    background-color: #f0eeeee0;
     display: flex;
     flex-direction: row;
-    padding-top: 5px;
-    padding-left: 200px;
+
+    padding-left: 100px;
     font-size: 20px;
   }
   
   .navbar-login-btn{
+    color: #f4511e;
     background-color: #ffffff;
     border: 2px solid #f4511e;
     transition: 0.3s;
@@ -86,6 +89,7 @@
   }
   
   .navbar-register-btn{
+    color: #ffffff;;
     background-color: #f4511e;
     transition: 0.3s;
     border-radius: 50px;
@@ -97,3 +101,17 @@
   .navbar-register-btn:hover{
     background-color: #f88b6a;
   }
+
+
+
+ @media only screen and (max-width: 1200px) {
+
+
+    .search,.navbar-buttons { display: none; } 
+
+    .navbar-home-icon{  
+  margin-left: auto;
+  margin-right: auto;
+  }
+  }
+
