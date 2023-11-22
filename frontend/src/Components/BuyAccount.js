@@ -41,7 +41,16 @@ function BuyAccount() {
         </div>
       </div>
       <div className="wrapper">
-        <div className="box a">A</div>
+        <div className="box a">
+          A
+          <div className="title-product-info">
+            <h6>Product info</h6>
+          </div>
+          <div className="details">
+            <h6>Details</h6>
+            <p>This is 10250RP offer</p>
+          </div>
+        </div>
         <div className="box b">B</div>
         <div className="box c">C</div>
       </div>

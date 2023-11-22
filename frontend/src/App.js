@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./Styles/App.css";
 import "./Styles/BuyAccount.css";
 import "./Styles/Header.css";
