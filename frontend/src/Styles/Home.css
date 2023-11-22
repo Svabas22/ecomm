@@ -1,0 +1,39 @@
+.grid-wrapper{
+    padding-top: 10px;
+    justify-content: center;
+    display: grid;
+    grid-template:50px / auto auto auto auto;
+    grid-gap: 10px
+}
+
+.grid-wrapper div{
+    background-color: white;
+    width: 200px;
+    height: 70px;
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    transition: top ease 0.3s;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+
+.grid-wrapper div:hover{
+    top: -5px;
+    box-shadow: 0 0 11px rgba(33,33,33,.2); 
+}
+
+.grid-title{
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 15px;
+    line-height: 1rem;
+    font-size: 0.875rem;
+    font-weight: bold;
+}
+
+.grid-price{
+    font-size: 0.875rem;
+    font-weight: 500;
+
+}

@@ -1,4 +1,5 @@
 import "./Styles/App.css";
+import "./Styles/Home.css";
 import "./Styles/BuyAccount.css";
 import "./Styles/Header.css";
 import "./Styles/Footer.css";
