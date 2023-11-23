@@ -1,5 +1,5 @@
 import Header from "./Header";
-
+import worldIcon from "../Images/world_icon.jpg";
 function Home() {
   return (
     <>
@@ -7,15 +7,108 @@ function Home() {
         <Header />
         <div className="body">
           <div className="grid-wrapper">
-            <div className="grid-title">
-              <span>10000 RP</span>
-              <div className="grid-price"></div>
-              <div className="grid-price"></div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
             </div>
-
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
+            </div>
+            <div className="grid">
+              <div className="row-grid">
+                <img className="grid-icon" src={worldIcon} />
+                <div className="grid-title">
+                  <h6>10000 RP</h6>
+                </div>
+              </div>
+              <hr />
+              <div className="row-grid account">
+                <div className="tier-level">T5 L2</div>
+                <div className="grid-price">
+                  <div className="price-text">Price</div>
+                  <div className="price-num">40.56</div>
+                  <div className="price-currency">EUR</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

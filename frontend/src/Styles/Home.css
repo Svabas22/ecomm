@@ -3,37 +3,93 @@
     justify-content: center;
     display: grid;
     grid-template:50px / auto auto auto auto;
-    grid-gap: 10px
+    grid-gap: 20px;
+    row-gap: 100px;
 }
 
-.grid-wrapper div{
+.grid{
     background-color: white;
-    width: 200px;
-    height: 70px;
+    width: 250px;
+    height: fit-content;
     cursor: pointer;
     position: relative;
     top: 0;
     transition: top ease 0.3s;
     border: 1px solid gainsboro;
     border-radius: 10px;
+    
 }
 
-.grid-wrapper div:hover{
+.grid:hover{
     top: -5px;
     box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
+.row-grid{
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.grid-icon{
+    width: 1em;
+  height: 1em;
+}
+
 .grid-title{
     text-align: left;
-    padding-left: 20px;
-    padding-top: 15px;
+    padding-left: 5px;
     line-height: 1rem;
     font-size: 0.875rem;
     font-weight: bold;
 }
 
+.account{
+    justify-content: space-between;
+    padding-bottom: 20px;
+}
+
+.tier-level{
+    background-color: rgb(192, 186, 186);
+    border-radius: 5px;
+    width: 60px;
+    font-size: 12px;
+    font-family: robotoFlex;
+    padding-top: 1px;
+    transition: 0.3s;
+}
+
+.tier-level:hover{
+    background-color: rgb(171, 165, 165);
+}
+
 .grid-price{
+    display: flex;
+    flex-direction: row;
+    font-family: robotoFlex;
+}
+
+.price-text{
     font-size: 0.875rem;
     font-weight: 500;
+    color: gray;
+}
 
+.price-num{
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.price-currency{
+    font-size: 0.625rem;
+    font-weight: 400;
+    line-height: 1rem;
+    margin-top: 4px;
+}
+
+.h6{
+    font-size: 0.875rem;
+  font-weight: 500;
 }

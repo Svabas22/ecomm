@@ -1,0 +1,12 @@
+@font-face {
+    font-family: robotoFlex;
+    src: url(./Fonts/RobotoFlex.ttf);
+}
+
+.robotoFlex{
+    font-family: robotoFlex;
+}
+
+span, h6{
+    font-family: robotoFlex, Arial, Helvetica, sans-serif;
+}
