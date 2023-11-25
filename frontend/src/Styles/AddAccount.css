@@ -1,0 +1,21 @@
+.addAccountBackground{
+    width: 100%;
+    height: 150px;
+    background: rgba(217, 231, 13, 0.795);
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    z-index:-2;
+}
+
+.addAccount-content{
+    background-color: rgb(246, 245, 245);
+    width: 500px;
+    min-height: 400px;
+    display: inline-block;
+    margin-top: -90px;
+    border-radius: 15px;
+    position: relative;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

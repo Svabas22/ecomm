@@ -47,6 +47,13 @@
   .footer-btn:hover{
     cursor: pointer;
   }
+
+  .footer h2{
+    transition: 0.3s;
+  }
+  .footer h2:hover{
+    color: rgb(52, 52, 52);
+  }
   
   .footer h3{
     color: #484f55;

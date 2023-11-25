@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // NOT useHistory
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 function Register() {
   useEffect(() => {
@@ -31,37 +32,58 @@ function Register() {
 
   return (
     <>
-      <div className="body">
+      <div className="main">
         <Header />
-        <div className="col-sm-6 offset-sm-3">
-          <h1>Register page</h1>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="form-control"
-            placeholder="name"
-          />
-          <br />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
-            placeholder="password"
-          />
-          <br />
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-control"
-            placeholder="email"
-          />
-          <br />
-          <button onClick={signUp} className="btn btn-primary">
-            Sign up
-          </button>
+        <div className="body">
+          <div className="wrapper-register">
+            <div className="register-background"></div>
+            <div className="register-content">
+              <div className="col-sm-6 offset-sm-3">
+                <div className="Page-title">
+                  <h1>Welcome</h1>
+                </div>
+                <div className="row-input">
+                  <p>Username</p>
+                  <input
+                    type="text"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    className="form-control"
+                    placeholder="name"
+                  />
+                </div>
+                <div className="row-input">
+                  <p>E-mail</p>
+                  <input
+                    type="text"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control"
+                    placeholder="email"
+                  />
+                </div>
+                <div className="row-input">
+                  <p>Password</p>
+                  <input
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
+                    placeholder="password"
+                  />
+                </div>
+                <button onClick={signUp} className="btn btn-primary">
+                  Sign up
+                </button>
+                <hr />
+                <p>Already have an account?</p>
+
+                <div className="footer-btn">
+                  <Link to="/login">Sign in</Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

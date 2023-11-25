@@ -1,10 +1,13 @@
 import "./Styles/App.css";
 import "./Styles/Home.css";
 import "./Styles/BuyAccount.css";
-import "./Styles/Header.css";
-import "./Styles/Footer.css";
-import "./Styles/Font.css";
 import "./Styles/About.css";
+import "./Styles/Register.css";
+import "./Styles/Login.css";
+import "./Styles/Header.css";
+import "./Styles/AddAccount.css";
+import "./Styles/Footer.css";
+import "./Styles/Fonts/Font.css";
 import { Button } from "react-bootstrap";
 import Header from "./Components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";

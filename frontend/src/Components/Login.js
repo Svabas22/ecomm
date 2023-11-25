@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header";
+import { Link } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -34,27 +35,45 @@ function Login() {
   }
   return (
     <>
-      <div className="body">
+      <div className="main">
         <Header />
-        <h1>Login page</h1>
-        <div className="col-sm-6 offset-sm-3">
-          <input
-            type="text"
-            placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
-            className="form-control"
-          />
-          <br />
-          <input
-            type="password"
-            placeholder="password"
-            onChange={(e) => setPassword(e.target.value)}
-            className="form-control"
-          />
-          <br />
-          <button onClick={login} className="btn btn-primary">
-            Login
-          </button>
+        <div className="body">
+          <div className="wrapper-login">
+            <div className="login-background"></div>
+            <div className="login-content">
+              <div className="col-sm-6 offset-sm-3">
+                <div className="Page-title">
+                  <h1>Welcome</h1>
+                </div>
+                <div className="row-input">
+                  <p>E-mail</p>
+                  <input
+                    type="text"
+                    placeholder="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="form-control"
+                  />
+                </div>
+                <div className="row-input">
+                  <p>Password</p>
+                  <input
+                    type="password"
+                    placeholder="password"
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="form-control"
+                  />
+                </div>
+                <button onClick={login} className="btn btn-primary">
+                  Login
+                </button>
+                <hr></hr>
+                <p>Not signed in?</p>
+                <div className="footer-btn">
+                  <Link to="/register">Sign up</Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </>

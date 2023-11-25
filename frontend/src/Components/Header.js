@@ -54,9 +54,7 @@ function Header() {
                       <button className="navbar-buy-btn">Buy Temp</button>
                     </Link>
                     <Link to="/add">
-                      <button className="navbar-buy-btn">
-                        Add account temp
-                      </button>
+                      <button className="navbar-buy-btn">Add account</button>
                     </Link>
                   </>
                 )}
