@@ -4,6 +4,7 @@ import "./Styles/BuyAccount.css";
 import "./Styles/Header.css";
 import "./Styles/Footer.css";
 import "./Styles/Font.css";
+import "./Styles/About.css";
 import { Button } from "react-bootstrap";
 import Header from "./Components/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
@@ -16,6 +17,7 @@ import Protected from "./Components/Protected";
 import Footer from "./Components/Footer";
 import BuyAccount from "./Components/BuyAccount";
 import HomePage from "./Components/test";
+import About from "./Components/About";
 function App() {
   return (
     <div className="App">
@@ -27,9 +29,10 @@ function App() {
           <Route path="/add" element={<AddAccount />} />
           <Route path="/list" element={<AccountList />} />
           <Route path="/buy" element={<BuyAccount />} />
+          <Route path="/about" element={<About />} />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      <Footer />
     </div>
   );
 }

@@ -1,0 +1,46 @@
+.about-content{
+    padding-top: 250px;
+    padding-bottom: 250px;
+    justify-content: center;
+    text-align: center;
+    font-family: robotoFlex, sans-serif;
+}
+
+.about-content p{
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding-bottom: 100px;
+}
+
+.row-about-goals{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    min-height: 200px;
+    padding-top: 15px;
+    font-family: Helvetica, sans-serif;
+    background-color: #cd1228;
+    color: #fff !important;
+}
+
+.col-goals{
+    display: flex;
+    flex-direction: column;
+}
+
+.row-goal{
+    display: flex;
+    flex-direction: row;
+}
+
+.num-goal{
+    margin-right: 24px;
+}
+
+.text-goal{
+    font-size: 1.3rem;
+  line-height: 3rem;
+}
+
+
+
