@@ -23,46 +23,48 @@ function AddAccount() {
   return (
     <>
       <Header />
-      <div className="col-sm-6 offset-sm-3">
-        <br />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <br />
-        <input
-          type="password"
-          className="form-control"
-          placeholder="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="tier"
-          onChange={(e) => setTier(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="division"
-          onChange={(e) => setDivision(e.target.value)}
-        />
-        <br />
-        <input
-          type="text"
-          className="form-control"
-          placeholder="price"
-          onChange={(e) => setPrice(e.target.value)}
-        />
-        <br />
-        <button onClick={addAccount} className="btn btn-primary">
-          Add account
-        </button>
+      <div className="body">
+        <div className="col-sm-6 offset-sm-3">
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="name"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <br />
+          <input
+            type="password"
+            className="form-control"
+            placeholder="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="tier"
+            onChange={(e) => setTier(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="division"
+            onChange={(e) => setDivision(e.target.value)}
+          />
+          <br />
+          <input
+            type="text"
+            className="form-control"
+            placeholder="price"
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <br />
+          <button onClick={addAccount} className="btn btn-primary">
+            Add account
+          </button>
+        </div>
       </div>
     </>
   );

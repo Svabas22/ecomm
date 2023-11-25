@@ -1,49 +1,65 @@
 import Header from "./Header";
-
+import React, { useState } from "react";
 function BuyAccount() {
+  const [showMore, setShowMore] = useState(false);
+  const text =
+    "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
   return (
     <>
       <Header />
       <div className="body">
-        <div className="upper-content">
-          <div className="col-upper-content">
-            <div className="account-title">
-              <h1>Title this is not real</h1>
-            </div>
-            <div className="account-info">
-              <h2 className="account-info-h2">Account info</h2>
-              <p className="account-info-p">
-                Price <b>444</b>
-              </p>
-              <hr />
-              <div className="account-details">
-                <h2 className="account-info-h2">Details</h2>
-                <p className="account-info-p">
-                  This is a 444 dollar
-                  offerrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+        <div className="wrapper">
+          <div className="main-title">
+            <h1>10250RP</h1>
+          </div>
+          <div className="box a">
+            <div className="content-wrapper">
+              <div className="row product-info">
+                <h6>Product info</h6>
+              </div>
+              <div className="row details">
+                <h6>Details</h6>
+              </div>
+              <div className="row offer">
+                <hr />
+                <p>
+                  This is 10250RP offer <br />
+                  <p>
+                    {showMore ? text : `${text.substring(0, 81)}`}
+                    <button
+                      className="btn-show-more"
+                      onClick={() => setShowMore(!showMore)}
+                    >
+                      {showMore ? "Show less" : "Show more"}
+                    </button>
+                  </p>
                 </p>
               </div>
             </div>
           </div>
-          <div className="right-upper-content">
-            <div className="col-right-upper-content">
-              <h2>Order</h2>
-              <hr />
-              <div className="row-price-right-upper-content">
-                <h2>Total price</h2>
-                <h2>
-                  XX <span>eur</span>
-                </h2>
+          <div className="box b">
+            <div className="content-wrapper">
+              <div className="row buy">
+                <h6>Buy details</h6>
+                <hr />
               </div>
-              <button className="buy-btn">BUY NOW</button>
+              <div className="row price">
+                <div className="total price">
+                  <h6>Total price</h6>
+                </div>
+                <div className="price count">
+                  <h6>46 eur</h6>
+                  <hr />
+                </div>
+              </div>
+              <div className="row-btn">
+                <button className="buy-btn">
+                  <span>Buy now</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className="wrapper">
-        <div className="box a">A</div>
-        <div className="box b">B</div>
-        <div className="box c">C</div>
       </div>
     </>
   );

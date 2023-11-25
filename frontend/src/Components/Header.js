@@ -3,7 +3,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router-dom";
-
+import logo from "../Images/logo.jpg";
+import search_logo from "../Images/search_logo.png";
 function Header() {
   let user = JSON.parse(localStorage.getItem("user-info"));
   const navigate = useNavigate();
@@ -20,14 +21,14 @@ function Header() {
           <div className="navbar_wrapper">
             <div className="navbar-home-icon">
               <Link to="/home">
-                <img src="../favicon.ico"></img>
+                <img className="navbar-home-icon" src={logo}></img>
               </Link>
             </div>
             <Nav>
               <div className="search">
                 <input className="search-input" placeholder="Search"></input>
                 <div className="search-input-icon">
-                  <img src="54481.png"></img>
+                  <img src={search_logo}></img>
                 </div>
               </div>
               <div className="navbar-buttons">
@@ -50,7 +51,12 @@ function Header() {
                       <button className="navbar-register-btn">Register</button>
                     </Link>
                     <Link to="/buy">
-                      <button className="navbar-register-btn">Buy Temp</button>
+                      <button className="navbar-buy-btn">Buy Temp</button>
+                    </Link>
+                    <Link to="/add">
+                      <button className="navbar-buy-btn">
+                        Add account temp
+                      </button>
                     </Link>
                   </>
                 )}

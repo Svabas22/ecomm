@@ -11,13 +11,22 @@ function Footer() {
   return (
     <>
       <div className="footer">
-        <div className="footer-feed">
-          <a href="mailto:">
-            <h2>Kontaktai</h2>
-          </a>
-          <br />
-          <div className="footer-btn" onClick={goToTop}>
-            <h3>To top</h3>
+        <div className="footer-content">
+          <div className="footer-col">
+            <div className="footer-info">Informacija</div>
+            <div className="footer-btn">Apie</div>
+          </div>
+          <div className="footer-col">
+            <div className="footer-btn">
+              <a href="mailto:">
+                <h2>Kontaktai</h2>
+              </a>
+            </div>
+          </div>
+          <div className="footer-col">
+            <div className="footer-btn" onClick={goToTop}>
+              <h2>To top</h2>
+            </div>
           </div>
         </div>
       </div>
