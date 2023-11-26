@@ -43,7 +43,7 @@ function Login() {
             <div className="login-content">
               <div className="col-sm-6 offset-sm-3">
                 <div className="Page-title">
-                  <h1>Welcome</h1>
+                  <h1>Login</h1>
                 </div>
                 <div className="row-input">
                   <p>E-mail</p>

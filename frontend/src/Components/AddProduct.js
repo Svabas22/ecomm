@@ -1,12 +1,12 @@
 import Header from "./Header";
 import { useState } from "react";
-function AddAccount() {
+function AddProduct() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [tier, setTier] = useState("");
   const [division, setDivision] = useState("");
   const [price, setPrice] = useState("");
-  async function addAccount() {
+  async function addProduct() {
     console.warn(name, password, tier, division, price);
     const formData = new FormData();
     formData.append("name");
@@ -51,21 +51,12 @@ function AddAccount() {
                 />
               </div>
               <div className="row-input">
-                <p>Tier</p>
+                <p>Region</p>
                 <input
                   type="text"
                   className="form-control"
-                  placeholder="tier"
+                  placeholder="region"
                   onChange={(e) => setTier(e.target.value)}
-                />
-              </div>
-              <div className="row-input">
-                <p>Division</p>
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="division"
-                  onChange={(e) => setDivision(e.target.value)}
                 />
               </div>
               <div className="row-input">
@@ -78,8 +69,8 @@ function AddAccount() {
                 />
               </div>
 
-              <button onClick={addAccount} className="btn btn-primary">
-                Add account
+              <button onClick={addProduct} className="btn btn-primary">
+                Add Product
               </button>
             </div>
           </div>
@@ -89,4 +80,4 @@ function AddAccount() {
   );
 }
 
-export default AddAccount;
+export default AddProduct;
