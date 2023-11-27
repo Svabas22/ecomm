@@ -20,7 +20,6 @@ import Protected from "./Components/Protected.js";
 import Footer from "./Components/Footer.js";
 import BuyAccount from "./Components/BuyAccount.js";
 import About from "./Components/About.js";
-import test from "./Components/test.js"
 function App() {
   return (
     <div className="App">
