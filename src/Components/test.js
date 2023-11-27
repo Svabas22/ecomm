@@ -1,20 +1,11 @@
 import React from "react";
+import db from "./backend/Get"
 
-const HomePage = () => {
-  return (
-    <div>
-      <header>
-        <h1>My Simple React Home Page</h1>
-      </header>
-      <main>
-        <p>
-          Welcome to my simple React home page! This is a basic example of a
-          React project.
-        </p>
-        <img src="https://via.placeholder.com/300" alt="Placeholder" />
-      </main>
-    </div>
-  );
-};
-
-export default HomePage;
+function test(){
+  const sql = "SELECT * FROM users";
+    db.query(sql,(err,data)=>{
+        if(err) return res.json(err);
+        return res.json(data);
+    })
+  }
+export default test;

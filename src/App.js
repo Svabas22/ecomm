@@ -21,18 +21,20 @@ import Footer from "./Components/Footer";
 import BuyAccount from "./Components/BuyAccount";
 import HomePage from "./Components/test";
 import About from "./Components/About";
+import TEST from "./Components/test"
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/add" element={<AddProduct />} />
           <Route path="/list" element={<AccountList />} />
           <Route path="/buy" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />
+          <Route path="/test" element={<TEST />} />
         </Routes>
         <Footer />
       </BrowserRouter>
