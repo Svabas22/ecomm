@@ -13,7 +13,7 @@ const db = mysql.createConnection({
     password: process.env.CONNECTION_PASS,
     database: 'mysql'
 })
-db.q
+
 export default db;
 // app.get('/',(re,res)=>{
 // return res.json("Backend");
