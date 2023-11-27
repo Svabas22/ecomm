@@ -1,20 +1,25 @@
-const express = require('express');
-const mysql = require('mysql2');
-const cors = require('cors');
-const dotenv = require('dotenv')
+import mysql from 'mysql2'
+import cors from 'cors'
+import dotenv from 'dotenv'
 
 dotenv.config();
-const app = express()
-app.use(cors())
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     host: process.env.URL,
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
-    database: 'mysql'
-})
+    database: 'mydb'
+}).promise()
 
-export default db;
+async function getUsers(){
+        const [rows] = await db.query("SELECT * FROM mydb.users")
+        return rows
+}
+const users = await getUsers()
+console.log(users)
+
+export default getUsers;
+
 // app.get('/',(re,res)=>{
 // return res.json("Backend");
 // })
