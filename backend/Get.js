@@ -23,6 +23,7 @@ async function fetchUsers() {
         console.log(users);
 }
 fetchUsers();
+
 // app.get('/',(re,res)=>{
 // return res.json("Backend");
 // })
