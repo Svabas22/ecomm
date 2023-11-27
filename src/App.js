@@ -9,7 +9,7 @@ import "./Styles/AddProduct.css";
 import "./Styles/Footer.css";
 import "./Styles/Fonts/Font.css";
 import { Button } from "react-bootstrap";
-import Header from "./Components/Header";
+import Header from "./Components/Header.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./Components/Login.js";
 import Register from "./Components/Register.js";

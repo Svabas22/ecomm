@@ -1,25 +1,27 @@
-import mysql from 'mysql2'
-import cors from 'cors'
-import dotenv from 'dotenv'
+const mysql = require('mysql2')
+const cors = require('cors')
+const dotenv = require('dotenv')
 
 dotenv.config();
 
 const db = mysql.createPool({
-    host: process.env.URL,
+    host: 'localhost', //process.env.URL,
+    port: '1234',
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
     database: 'mydb'
 }).promise()
 
 async function getUsers(){
-        const [rows] = await db.query("SELECT * FROM mydb.users")
-        return rows
+    const [rows] = await db.query("SELECT * FROM mydb.users")
+    return rows
 }
-const users = await getUsers()
-console.log(users)
+async function fetchUsers() {
 
-export default getUsers;
-
+        const users = await getUsers();
+        console.log(users);
+}
+fetchUsers();
 // app.get('/',(re,res)=>{
 // return res.json("Backend");
 // })
