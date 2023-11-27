@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header.js";
 import React, { useState } from "react";
 function BuyAccount() {
   const [showMore, setShowMore] = useState(false);

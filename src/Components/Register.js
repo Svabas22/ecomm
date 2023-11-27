@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // NOT useHistory
-import Header from "./Header";
+import Header from "./Header.js";
 import { Link } from "react-router-dom";
 
 function Register() {

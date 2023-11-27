@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header.js";
 import worldIcon from "../Images/world_icon.jpg";
 function Home() {
   return (

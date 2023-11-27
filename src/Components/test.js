@@ -1,6 +1,6 @@
-
 import getUsers from "./backend/Get.js"
 
-
-return (await getUsers())
+function test(){
+  return (getUsers())
+}
 export default test;

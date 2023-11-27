@@ -1,4 +1,4 @@
-import Header from "./Header";
+import Header from "./Header.js";
 import { useState } from "react";
 function AddProduct() {
   const [name, setName] = useState("");
