@@ -4,6 +4,7 @@ const dotenv = require('dotenv')
 
 dotenv.config();
 
+
 const db = mysql.createPool({
     host: 'localhost', //process.env.URL,
     port: '1234',
