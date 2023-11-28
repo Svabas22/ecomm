@@ -20,6 +20,7 @@ import Protected from "./Components/Protected.js";
 import Footer from "./Components/Footer.js";
 import BuyAccount from "./Components/BuyAccount.js";
 import About from "./Components/About.js";
+
 function App() {
   return (
     <div className="App">
@@ -32,7 +33,6 @@ function App() {
           <Route path="/list" element={<AccountList />} />
           <Route path="/buy" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />
-          <Route path="/test" element={<test />} />
         </Routes>
         <Footer />
       </BrowserRouter>

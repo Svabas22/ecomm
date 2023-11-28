@@ -1,6 +1,8 @@
+import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import Header from "./Header.js";
 
 function AccountList() {
+  TabTitle("Account List");
   return (
     <>
       <Header />

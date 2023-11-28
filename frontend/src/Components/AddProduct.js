@@ -1,6 +1,8 @@
+import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import Header from "./Header.js";
 import { useState } from "react";
 function AddProduct() {
+  TabTitle("Add Product");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [tier, setTier] = useState("");

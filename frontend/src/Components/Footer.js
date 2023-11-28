@@ -36,7 +36,7 @@ function Footer() {
           <div className="footer-row">
             <div className="footer-col">
               <div className="footer-btn">
-                <Link to="/home">Home</Link>
+                <Link to="/">Home</Link>
               </div>
             </div>
           </div>

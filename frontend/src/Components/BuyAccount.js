@@ -1,6 +1,8 @@
+import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import Header from "./Header.js";
 import React, { useState } from "react";
 function BuyAccount() {
+  TabTitle("Purchase");
   const [showMore, setShowMore] = useState(false);
   const text =
     "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";

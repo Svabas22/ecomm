@@ -2,8 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "./Header.js";
 import { Link } from "react-router-dom";
+import { TabTitle } from "../Utilities/GeneralFunctions.js";
 
 function Login() {
+  TabTitle("Login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();

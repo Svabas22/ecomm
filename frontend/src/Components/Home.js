@@ -1,6 +1,8 @@
 import Header from "./Header.js";
 import worldIcon from "../Images/world_icon.jpg";
+import { TabTitle } from "../Utilities/GeneralFunctions.js";
 function Home() {
+  TabTitle("Home");
   return (
     <>
       <div className="main">

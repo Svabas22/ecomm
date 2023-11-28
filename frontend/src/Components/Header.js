@@ -20,7 +20,7 @@ function Header() {
         <div className="navbar_wrapper">
           <div className="navbar_wrapper">
             <div className="navbar-home-icon">
-              <Link to="/home">
+              <Link to="/">
                 <img className="navbar-home-icon" src={logo}></img>
               </Link>
             </div>
