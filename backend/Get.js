@@ -11,8 +11,11 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(cookieParser())
-app.use(cors());
+app.use(cookieParser());
+app.use(cors({
+    origin: 'http://vhost1:80',
+    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
+  }));
 
 function validate_input(inputString){
     const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '{', '}', '[', ']', '|', '\\', ';', ':', '"', '\'', '<', '>', ',', '.', '/', '?'];
