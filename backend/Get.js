@@ -46,8 +46,8 @@ function verifyToken(req, res, next) {
 
 // database setup
 const db = mysql.createPool({
-    host: 'localhost', //process.env.URL,
-    port: '1234',
+    host: process.env.URL,
+    port: '3306',
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
     database: 'mydb'
