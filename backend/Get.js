@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(cors({
-    origin: 'http://vhost1:80',
+    origin: '*',
     optionsSuccessStatus: 200, // Some legacy browsers choke on 204
   }));
 
