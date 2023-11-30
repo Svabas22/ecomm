@@ -6,9 +6,10 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const isReachable = require("is-reachable")
 
 dotenv.config();
-console.log(process.env.SQL_USERNAME)
+
 const app = express();
 const corsOptions = {
     origin: (origin, callback) => {
@@ -24,7 +25,6 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
-
 
 function validate_input(inputString){
     const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '{', '}', '[', ']', '|', '\\', ';', ':', '"', '\'', '<', '>', ',', '.', '/', '?'];
@@ -186,6 +186,7 @@ app.get('/listings', async (req,res)=>{
     return res.status(200).json(await db.query('SELECT list_Name,list_price,list_description FROM listings'));
 
 });
-app.listen(4321,()=>{
+app.listen(4321,async ()=>{
     console.log("listening on 4321");
+    console.log(await isReachable('database:3306'))
 });
