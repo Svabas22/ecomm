@@ -9,13 +9,11 @@ const cookieParser = require('cookie-parser');
 
 dotenv.config();
 const app = express();
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
-app.use(cors({
-    origin: '*',
-    optionsSuccessStatus: 200, // Some legacy browsers choke on 204
-  }));
+
 
 function validate_input(inputString){
     const specialChars = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', '=', '{', '}', '[', ']', '|', '\\', ';', ':', '"', '\'', '<', '>', ',', '.', '/', '?'];
