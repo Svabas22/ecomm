@@ -11,7 +11,7 @@
     padding-bottom: 300px;
     justify-content: center;
     clear:both;
-    max-width: 100%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
     height:75px;
@@ -57,5 +57,12 @@
   
   .footer h3{
     color: #484f55;
+  }
+
+  @media only screen and (max-width: 500px){
+    .footer-row{
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
   }
   

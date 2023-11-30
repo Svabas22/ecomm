@@ -1,6 +1,5 @@
 .grid-wrapper{
-    padding-top: 100px;
-    padding-right: 100px;
+
     justify-content: center;
     display: grid;
     grid-template:50px / auto auto auto auto;
