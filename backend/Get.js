@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 dotenv.config();
+console.log(process.env.SQL_USERNAME)
 const app = express();
 const corsOptions = {
     origin: (origin, callback) => {
