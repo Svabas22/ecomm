@@ -13,7 +13,13 @@ function Home() {
     const fetchData = async () => {
       try {
         // Assuming you fetch your data asynchronously and resolve it
-        const data = await fetch("http://localhost:4321/listings"); 
+        const data = await fetch("http://localhost:4321/listings",{
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          mode: 'cors'
+        }); 
         const jsondata = await data.json();
         console.log(jsondata)
         // Once data is fetched, update state with the retrieved data
