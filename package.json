@@ -1,0 +1,13 @@
+{
+  "name": "ecomm",
+  "version": "1.0.0",
+  "description": "Help me",
+  "main": "index.js",
+  "scripts": {
+    "start": "cd backend && npm i && cd ../ && node backend/Get.js",
+    "build": "cd frontend && npm install && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
