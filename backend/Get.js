@@ -6,22 +6,12 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const isReachable = require("is-reachable")
 
 dotenv.config();
 
 const app = express();
-const corsOptions = {
-    origin: (origin, callback) => {
-      callback(null, true);
-    },
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Access-Control-Allow-Origin", "Origin", "X-Requested-With", "Content-Type", "Accept", "Authorization"],
-    credentials: true
-};
 
-app.options('*', cors(corsOptions));
-app.use(cors(corsOptions));
+app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -59,7 +49,7 @@ function verifyToken(req, res, next) {
 // database setup
 const db = mysql.createPool({
     host: process.env.URL,
-    port: '3306',
+    port: process.env.SQL_PORT,
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
     database: 'mydb'
@@ -182,11 +172,10 @@ app.post('/addlisting',verifyToken, async (req,res)=>{
 
 });
 
-app.get('/listings', async (req,res)=>{
+app.get('/api/listings', async (req,res)=>{
     return res.status(200).json(await db.query('SELECT list_Name,list_price,list_description FROM listings'));
 
 });
 app.listen(4321,async ()=>{
     console.log("listening on 4321");
-    console.log(await isReachable('database:3306'))
 });
