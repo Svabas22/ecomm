@@ -2,16 +2,15 @@ import Header from "./Header.js";
 import worldIcon from "../Images/world_icon.jpg";
 import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import fetchData from "./fetch.js";
 
 
 function Home() {
   const [gridData, setGridData] = useState([]);
 
-  useEffect(async () => {
+  useEffect(() => {
     
-    setGridData(await fetchData("/listings"));
+    setGridData(fetchData("/listings"));
   }, []);
   TabTitle("Home");
   console.log(gridData)
