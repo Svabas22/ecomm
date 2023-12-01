@@ -20,7 +20,7 @@ import Protected from "./Components/Protected.js";
 import Footer from "./Components/Footer.js";
 import BuyAccount from "./Components/BuyAccount.js";
 import About from "./Components/About.js";
-
+import CustomSelect from "./Utilities/CustomSelect.js";
 function App() {
   return (
     <div className="App">
