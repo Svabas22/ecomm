@@ -11,13 +11,15 @@ function AddProduct() {
   async function addProduct() {
     console.warn(name, password, region, price);
     const formData = new FormData();
-    formData.append("name");
-    formData.append("password");
-    formData.append("region");
-    formData.append("price");
-    let result = await fetch("/api/add", {
+    formData.append("account_username", name);
+    formData.append("account_password",password);
+    formData.append("list_region",region);
+    formData.append("list_price",price);
+    formData.append("")
+    let result = await fetch("/api/addlisting", {
       method: "POST",
       body: formData,
+      mode: 'cors',
     });
     alert("Data has been saved");
   }

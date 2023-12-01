@@ -11,25 +11,25 @@ function Register() {
       navigate("/add");
     }
   }, []);
-  const [name, setName] = useState("");
+  const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
   async function signUp() {
-    let item = { name, password, email };
-    console.warn(item);
-    let result = await fetch("http://localhost:8000/api/register", {
+    let item = { username, password};
+    console.log(item);
+    let result = await fetch("/api/register", {
       method: "POST",
       body: JSON.stringify(item),
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
+      mode: 'cors',
     });
     result = await result.json();
-    localStorage.setItem("user-info", JSON.stringify(result));
-    navigate("/home");
+    navigate("/");
   }
 
   return (
@@ -48,7 +48,7 @@ function Register() {
                   <p>Username</p>
                   <input
                     type="text"
-                    value={name}
+                    value={username}
                     onChange={(e) => setName(e.target.value)}
                     className="form-control"
                     placeholder="name"

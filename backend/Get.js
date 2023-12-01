@@ -55,7 +55,7 @@ const db = mysql.createPool({
     database: 'mydb'
 }).promise();
 
-app.post('/register', async (req, res) => {
+app.post('/api/register', async (req, res) => {
     
     const { body } = req;
 
@@ -87,7 +87,7 @@ app.post('/register', async (req, res) => {
                 
             const token = jwt.sign({ id: res.insertId }, process.env.JWT_SECRET, { expiresIn: '1h' }); // Create JWT token
             res.cookie('token', token, { httpOnly: true, secure: true });
-            return res.status(201);
+            return res.status(200).json({message: 'User created succesfully'});
                 
         }
     }
@@ -97,7 +97,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
-app.post('/login', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const { body } = req;
     if (!body || typeof body !== 'object') {
         return res.status(400).json({ error: 'Invalid request body' });
@@ -136,7 +136,7 @@ app.post('/login', async (req, res) => {
     
   });
 
-app.post('/addlisting',verifyToken, async (req,res)=>{
+app.post('/api/addlisting',verifyToken, async (req,res)=>{
     
     const { body } = req;
 
@@ -146,20 +146,25 @@ app.post('/addlisting',verifyToken, async (req,res)=>{
 
     const list_Name = body.list_Name;
     const list_description=body.list_description;
-    const list_price= body.list_price;
+    const list_price=body.list_price;
+    const list_region=body.list_region
+    const account_username= body.account_username;
+    const account_password= body.account_password;
+    
     if(list_price.match(/^[0-9]+$/) === null){
         console.log(list_price.match(/^[0-9]+$/))
         return res.status(400).json({ error: 'Invalid request body' });
     }
 
-    if (!list_Name || !list_description || !list_price) {
+    if (!list_Name || !list_description || !list_price || !account_username || !account_password) {
         return res.status(400).json({ error: 'Missing parameters' });
+        
     }
 
     try{
         
         // ADD listing
-        const addListing= await db.query('INSERT INTO listings (list_Name, list_description,list_price,users_id_for_list) VALUES (?, ?, ?, ?)', [list_Name, list_description,list_price,req.userId]);
+        const addListing= await db.query('INSERT INTO listings (list_Name, list_description,list_price,users_id_for_list,) VALUES (?, ?, ?, ?)', [list_Name, list_description,list_price,req.userId]);
             
         
         return res.status(201).json({ message: 'sucsess' });
