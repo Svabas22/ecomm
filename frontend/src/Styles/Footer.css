@@ -7,14 +7,14 @@
 
 .footer{
     position: relative;
-    margin-top: -150px;
-    padding-bottom: 300px;
     justify-content: center;
     clear:both;
+    height:75px;
     width: 100%;
+    padding-bottom: 300px;
+    margin-top: auto;
     margin-left: auto;
     margin-right: auto;
-    height:75px;
   }
 
   .footer-row{

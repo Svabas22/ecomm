@@ -1,8 +1,12 @@
+.wrapper{
+    overflow: hidden;
+}
 .upper-content{
     display: flex;
     flex-direction: row;
     padding-top: 20px;
 }
+
 
 .col-upper-content{
     display: flex;
