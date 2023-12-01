@@ -1,6 +1,7 @@
 import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import Header from "./Header.js";
 import { useState } from "react";
+import axios from 'axios';
 function AddProduct() {
   TabTitle("Add Product");
   const [name, setName] = useState("");
@@ -14,7 +15,7 @@ function AddProduct() {
     formData.append("password");
     formData.append("region");
     formData.append("price");
-    let result = await fetch("http://localhost:8000/api/add", {
+    let result = await fetch("/api/add", {
       method: "POST",
       body: formData,
     });

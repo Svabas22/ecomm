@@ -2,18 +2,31 @@ import Header from "./Header.js";
 import worldIcon from "../Images/world_icon.jpg";
 import { TabTitle } from "../Utilities/GeneralFunctions.js";
 import React, { useEffect, useState } from 'react';
-import fetchData from "./fetch.js";
+import axios from 'axios';
+import { json } from "react-router-dom";
+
 
 
 function Home() {
   const [gridData, setGridData] = useState([]);
 
   useEffect(() => {
+    const fetching = async ()=>{
+      try{
+        const data = await axios.get("/api/listings").then(response => {
+          return response.data;
+        });
+        setGridData(data[0]);
+      }catch (error) {
+        console.error('Error fetching data:', error);
+      }
+      
+    }
+    fetching();
     
-    setGridData(fetchData("/listings"));
   }, []);
+
   TabTitle("Home");
-  console.log(gridData)
   return (
     <>
       <div className="main">
