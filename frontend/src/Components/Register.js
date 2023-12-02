@@ -17,8 +17,7 @@ function Register() {
   const navigate = useNavigate();
 
   async function signUp() {
-
-    let item = { username, email, password};
+    let item = { username, email, password };
     console.log(item);
     let result = await fetch("/api/register", {
       method: "POST",
@@ -30,7 +29,15 @@ function Register() {
       mode: "cors",
     });
     result = await result.json();
-    navigate("/");
+    if (result.error) {
+      // Display an alert with the error message
+      window.alert(result.error);
+    } else if (result.message) {
+      // Display an alert with message
+      window.alert(result.message);
+    } else {
+      navigate("/");
+    }
   }
 
   return (
