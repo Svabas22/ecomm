@@ -28,13 +28,13 @@ function validate_input(inputString){
 
 function verifyToken(req, res, next) {
     const token = req.cookies['token']
-  
     if (!token) {
       return res.status(401).json({ auth: false, message: 'Not Allowed' });
     }
   
     jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
+        console.log(err);
         return res.status(500).json({ auth: false, message: 'Failed to authenticate token' });
       }
       if(typeof(decoded.id)==='number'){
@@ -64,8 +64,9 @@ app.post('/api/register', async (req, res) => {
     }
     const username = body.username;
     const password = body.password;
+    const email = body.email;
 
-    if (!username || !password) {
+    if (!username || !password || !email) {
         return res.status(400).json({ error: 'Missing username or password' });
     }
     if(username!==validate_input(username)){
@@ -83,9 +84,9 @@ app.post('/api/register', async (req, res) => {
             
         }else {
             // If username is available, insert the new user into the database
-            const adduser= await db.query('INSERT INTO users (users_name, users_password) VALUES (?, ?)', [username, hashedPassword]);
-                
-            const token = jwt.sign({ id: res.insertId }, process.env.JWT_SECRET, { expiresIn: '1h' }); // Create JWT token
+            const adduser= await db.query('INSERT INTO users (users_name, users_password, users_email) VALUES (?, ?, ?)', [username, hashedPassword, email]);
+
+            const token = jwt.sign({ id: adduser[0].insertId }, process.env.JWT_SECRET, { expiresIn: '1h' }); // Create JWT token
             res.cookie('token', token, { httpOnly: true, secure: true });
             return res.status(200).json({message: 'User created succesfully'});
                 
@@ -144,15 +145,19 @@ app.post('/api/addlisting',verifyToken, async (req,res)=>{
         return res.status(400).json({ error: 'Invalid request body' });
     }
 
-    const list_Name = body.list_Name;
-    const list_description=body.list_description;
-    const list_price=body.list_price;
-    const list_region=body.list_region
-    const account_username= body.account_username;
-    const account_password= body.account_password;
+    const list_Name = body.name;
+    const list_description=body.description;
+    const list_price=body.price;
+    const list_region=body.selectedRegion
+    const account_username= body.username;
+    const account_password= body.password;
     
-    if(list_price.match(/^[0-9]+$/) === null){
-        console.log(list_price.match(/^[0-9]+$/))
+    //check if list_price is a number
+    if (isNaN(list_price)) {
+        return res.status(400).json({ error: 'Invalid request body' });
+    }
+
+    if(list_price.match() === null){
         return res.status(400).json({ error: 'Invalid request body' });
     }
 
@@ -164,7 +169,7 @@ app.post('/api/addlisting',verifyToken, async (req,res)=>{
     try{
         
         // ADD listing
-        const addListing= await db.query('INSERT INTO listings (list_Name, list_description,list_price,users_id_for_list,) VALUES (?, ?, ?, ?)', [list_Name, list_description,list_price,req.userId]);
+        const addListing= await db.query('INSERT INTO listings (list_Name, list_description,list_price,users_id_for_list,account_username,account_password,list_region) VALUES (?, ?, ?, ?, ?, ?, ?)', [list_Name, list_description,list_price,req.userId,account_username,account_password,list_region]);
             
         
         return res.status(201).json({ message: 'sucsess' });
@@ -183,4 +188,6 @@ app.get('/api/listings', async (req,res)=>{
 });
 app.listen(4321,async ()=>{
     console.log("listening on 4321");
+    if(process.env.STARTED!==null) console.log("Config loaded")
+    else console.log("Config not loaded")
 });

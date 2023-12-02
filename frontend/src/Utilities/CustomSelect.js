@@ -20,8 +20,11 @@ function CustomSelect(props) {
     { label: "Vietnam", value: "VN" },
     { label: "Public Beta Environment", value: "PBE" },
   ];
+  const handleSelectChange = (selectedOption) => {
+    props.onChange(selectedOption); // Pass the selected option to the parent component
+  };
 
-  return <Select options={options} />;
+  return <Select options={options} onChange={handleSelectChange} />;
 }
 
 export default CustomSelect;

@@ -17,7 +17,7 @@ function Register() {
   const navigate = useNavigate();
 
   async function signUp() {
-    let item = { username, password};
+    let item = { username, email, password};
     console.log(item);
     let result = await fetch("/api/register", {
       method: "POST",

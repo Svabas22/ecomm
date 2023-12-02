@@ -10,22 +10,23 @@ function AddProduct() {
   const [description, setDescription] = useState("");
   const [username, setuserName] = useState("");
   const [password, setPassword] = useState("");
-  const [region, setRegion] = useState("");
   const [price, setPrice] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("");
+
+  const handleRegionChange = (selectedOption) => {
+    setSelectedRegion(selectedOption.value); // Update the selected region in state
+  };
   async function addProduct() {
-    console.warn(name, description, price, region, username, password);
-    const formData = new FormData();
-    formData.append("account_name", name);
-    formData.append("account_description", description);
-    formData.append("list_price", price);
-    formData.append("list_region", region);
-    formData.append("account_username", username);
-    formData.append("account_password", password);
-    formData.append("");
+    console.warn(name, description, price, selectedRegion, username, password);
+    let data = {name,description,username,password, price, selectedRegion}
     let result = await fetch("/api/addlisting", {
       method: "POST",
-      body: formData,
-      mode: "cors",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      mode: 'cors',
     });
     alert("Data has been saved");
   }
@@ -72,7 +73,7 @@ function AddProduct() {
                 </div>
                 <div className="row-input">
                   <p>Region</p>
-                  <CustomSelect />
+                  <CustomSelect onChange={handleRegionChange} />
                 </div>
                 <div className="row-input">
                   <p>Username</p>
