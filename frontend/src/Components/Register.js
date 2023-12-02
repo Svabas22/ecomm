@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // NOT useHistory
 import Header from "./Header.js";
 import { Link } from "react-router-dom";
-import { TabTitle } from "../Utilities/GeneralFunctions.js";
+import { TabTitle } from "../Utilities/TabTitle.js";
 
 function Register() {
   TabTitle("Register");
@@ -17,6 +17,7 @@ function Register() {
   const navigate = useNavigate();
 
   async function signUp() {
+
     let item = { username, email, password};
     console.log(item);
     let result = await fetch("/api/register", {
@@ -26,7 +27,7 @@ function Register() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      mode: 'cors',
+      mode: "cors",
     });
     result = await result.json();
     navigate("/");
