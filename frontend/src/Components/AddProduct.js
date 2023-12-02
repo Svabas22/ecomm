@@ -17,8 +17,7 @@ function AddProduct() {
     setSelectedRegion(selectedOption.value); // Update the selected region in state
   };
   async function addProduct() {
-    console.warn(name, description, price, selectedRegion, username, password);
-    let data = {name,description,username,password, price, selectedRegion}
+    let data = { name, description, username, password, price, selectedRegion };
     let result = await fetch("/api/addlisting", {
       method: "POST",
       body: JSON.stringify(data),
@@ -26,7 +25,7 @@ function AddProduct() {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      mode: 'cors',
+      mode: "cors",
     });
     alert("Data has been saved");
   }

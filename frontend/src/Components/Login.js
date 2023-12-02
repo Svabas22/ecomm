@@ -15,7 +15,6 @@ function Login() {
     }
   }, []);
   async function login() {
-    console.warn(email, password);
     let item = { email, password };
     let result = await fetch("http://localhost:8000/api/login", {
       method: "POST",
