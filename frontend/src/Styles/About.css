@@ -6,11 +6,15 @@
     font-family: robotoFlex, sans-serif;
 }
 
+
+
 .about-content p{
     font-size: 1.3rem;
     font-weight: 400;
     padding-bottom: 100px;
 }
+
+
 
 .row-about-goals{
     display: flex;
@@ -40,7 +44,12 @@
 .text-goal{
     font-size: 1.3rem;
   line-height: 3rem;
+  overflow: hidden;
 }
 
-
+@media only screen and (max-width: 1000px){
+    .row-about-goals{
+        flex-direction: column;
+    }
+}
 

@@ -1,8 +1,8 @@
-import { TabTitle } from "../Utilities/GeneralFunctions.js";
+import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
 import { useState } from "react";
 import axios from "axios";
-import CustomSelect from "../Utilities/CustomSelect.js";
+import CustomSelect from "../Utilities/AddProductSelect.js";
 
 function AddProduct() {
   TabTitle("Add Product");
