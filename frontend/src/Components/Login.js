@@ -9,15 +9,12 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
-  useEffect(() => {
-    if (localStorage.getItem("user-info")) {
-      navigate("/add");
-    }
-  }, []);
+
   async function login() {
-    console.warn(email, password);
+    console.warn( email, password);
     let item = { email, password };
-    let result = await fetch("http://localhost:8000/api/login", {
+    
+    let result = await fetch("/api/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,9 +27,7 @@ function Login() {
       // Handle the error, such as displaying a message to the user
       console.error(result.error);
     } else {
-      // Save user information in localStorage and navigate to the next page
-      localStorage.setItem("user-info", JSON.stringify(result));
-      navigate("/add");
+      navigate("/");
     }
   }
   return (
