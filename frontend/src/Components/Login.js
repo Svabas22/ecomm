@@ -11,9 +11,8 @@ function Login() {
   const navigate = useNavigate();
 
   async function login() {
-    console.warn( email, password);
     let item = { email, password };
-    
+
     let result = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -24,8 +23,11 @@ function Login() {
     });
     result = await result.json();
     if (result.error) {
-      // Handle the error, such as displaying a message to the user
-      console.error(result.error);
+      // Display an alert with the error message
+      window.alert(result.error);
+    } else if (result.message) {
+      // Display an alert with message
+      window.alert(result.message);
     } else {
       navigate("/");
     }

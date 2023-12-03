@@ -12,7 +12,6 @@ function Header() {
     localStorage.clear();
     navigate("/register");
   }
-  console.warn(user);
 
   return (
     <>
