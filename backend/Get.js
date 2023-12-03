@@ -28,6 +28,7 @@ function validate_input(inputString){
 
 function verifyToken(req, res, next) {
     const token = req.cookies['token']
+
     if (!token) {
       return res.status(401).json({ auth: false, message: 'Not Allowed' });
     }
@@ -44,7 +45,7 @@ function verifyToken(req, res, next) {
       }
       next();
     });
-  }
+}
 
 // database setup
 const db = mysql.createPool({
@@ -168,12 +169,8 @@ app.post('/api/addlisting',verifyToken, async (req,res)=>{
 
     try{
         
-        // ADD listing
         const addListing= await db.query('INSERT INTO listings (list_Name, list_description,list_price,users_id_for_list,account_username,account_password,list_region) VALUES (?, ?, ?, ?, ?, ?, ?)', [list_Name, list_description,list_price,req.userId,account_username,account_password,list_region]);
-            
-        
         return res.status(201).json({ message: 'sucsess' });
-                
         
     }catch(error){
         console.log(error)
