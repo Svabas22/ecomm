@@ -7,7 +7,6 @@ import { json } from "react-router-dom";
 
 function Home() {
   const [gridData, setGridData] = useState(null);
-  console.log("Type of gridData:", typeof gridData);
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -29,7 +28,8 @@ function Home() {
         <Header />
         <div className="body">
           <div className="grid-wrapper">
-            {gridData &&
+            {console.log("Type of gridData:", typeof gridData) &&
+              gridData &&
               gridData.map((item, index) => (
                 <div key={index} className="grid">
                   <div className="row-grid">
