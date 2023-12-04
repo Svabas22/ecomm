@@ -105,3 +105,53 @@
     font-size: 0.875rem;
   font-weight: 500;
 }
+
+.search {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 10vh;
+    margin-top: 50px;
+    padding: 1%;
+    border-radius: 20px;
+    border: 1px solid red;
+
+    }
+    
+    .search-input {
+      padding-left: 20px;
+      min-width: 350px;
+      border: none;
+      font-size: 1.5rem;
+      font-family: var(--font-raleway);
+      font-weight: 500;
+      outline: none;
+      color: black;
+      background: #fff;
+    }
+    
+    ::placeholder{
+      color: #a1a1a1;
+    }
+    .search img {
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  
+    .search-input-icon{
+      background-color: #f83939;
+      border-radius: 50px;
+      height: 40px;
+      width: 40px;
+      font-size: 23px;
+      opacity: 1;
+      transition: 0.3s;
+    }
+    
+    .search-input-icon:hover{
+      opacity: 0.8;
+    }
+    

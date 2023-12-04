@@ -4,6 +4,7 @@ import { TabTitle } from "../Utilities/TabTitle.js";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { json } from "react-router-dom";
+import search_logo from "../Images/search_logo.png";
 
 function Home() {
   const [gridData, setGridData] = useState(null);
@@ -27,6 +28,12 @@ function Home() {
       <div className="main">
         <Header />
         <div className="body">
+          <div className="search">
+            <input className="search-input" placeholder="Search"></input>
+            <div className="search-input-icon">
+              <img src={search_logo}></img>
+            </div>
+          </div>
           <div className="grid-wrapper">
             {console.log("Type of gridData:", typeof gridData) &&
               gridData &&

@@ -4,7 +4,6 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.jpg";
-import search_logo from "../Images/search_logo.png";
 function Header() {
   let user = JSON.parse(localStorage.getItem("user-info"));
   const navigate = useNavigate();
@@ -24,12 +23,6 @@ function Header() {
               </Link>
             </div>
             <Nav>
-              <div className="search">
-                <input className="search-input" placeholder="Search"></input>
-                <div className="search-input-icon">
-                  <img src={search_logo}></img>
-                </div>
-              </div>
               <div className="navbar-buttons">
                 {localStorage.getItem("user-info") ? (
                   // If user is logged in
