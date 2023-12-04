@@ -29,7 +29,14 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/add" element={<AddProduct />} />
+          <Route
+            path="/add"
+            element={
+              <Protected>
+                <AddProduct />
+              </Protected>
+            }
+          />
           <Route path="/list" element={<AccountList />} />
           <Route path="/buy" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />

@@ -35,7 +35,7 @@ function Footer() {
           </div>
           <div className="footer-row">
             <div className="footer-col">
-              <div className="footer-btn">
+              <div className="footer-btn" onClick={goToTop}>
                 <Link to="/">Home</Link>
               </div>
             </div>

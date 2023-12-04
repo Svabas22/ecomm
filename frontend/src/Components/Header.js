@@ -31,29 +31,24 @@ function Header() {
                 </div>
               </div>
               <div className="navbar-buttons">
-                {localStorage.getItem("user-info") ? ( // IF
+                {localStorage.getItem("user-info") ? (
+                  // If user is logged in
                   <>
-                    <Link className="navbar-link" to="/add">
-                      <button className="navbar-btn">Add to list</button>
+                    <Link to="/buy">
+                      <button className="navbar-buy-btn">Buy Temp</button>
                     </Link>
-                    <Link to="/list">
-                      <button className="navbar-btn">List view</button>
+                    <Link to="/add">
+                      <button className="navbar-buy-btn">Add account</button>
                     </Link>
                   </>
                 ) : (
-                  // ELSE
+                  // If user is not logged in
                   <>
                     <Link to="/login">
                       <button className="navbar-login-btn">Login</button>
                     </Link>
                     <Link to="/register">
                       <button className="navbar-register-btn">Register</button>
-                    </Link>
-                    <Link to="/buy">
-                      <button className="navbar-buy-btn">Buy Temp</button>
-                    </Link>
-                    <Link to="/add">
-                      <button className="navbar-buy-btn">Add account</button>
                     </Link>
                   </>
                 )}
