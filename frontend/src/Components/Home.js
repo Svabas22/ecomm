@@ -5,19 +5,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { json } from "react-router-dom";
 
-useEffect(() => {
-  const fetching = async () => {
-    try {
-      const data = await axios.get("/api/listings").then((response) => {
-        return response.data;
-      });
-      setGridData(data); // Set the entire array, not just the first element
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-  fetching();
-}, []);
+function Home() {
+  const [gridData, setGridData] = useState(null);
+
+  useEffect(() => {
+    const fetching = async () => {
+      try {
+        const data = await axios.get("/api/listings").then((response) => {
+          return response.data;
+        });
+        setGridData(data); // Set the entire array, not just the first element
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetching();
+  }, []);
 
   TabTitle("Home");
   return (
