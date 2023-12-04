@@ -7,7 +7,7 @@ import { json } from "react-router-dom";
 
 function Home() {
   const [gridData, setGridData] = useState(null);
-
+  console.log("Type of gridData:", typeof gridData);
   useEffect(() => {
     const fetching = async () => {
       try {

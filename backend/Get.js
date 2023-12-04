@@ -239,6 +239,7 @@ app.get("/api/listings", async (req, res) => {
     const listings = await db.query(
       "SELECT list_Name, list_price, list_description FROM listings"
     );
+    console.log(listings[0]); // Log the data to the console for debugging
     res.status(200).json(listings[0]);
   } catch (error) {
     console.error("Error fetching listings:", error);
