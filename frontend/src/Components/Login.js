@@ -29,9 +29,9 @@ function Login() {
     } else if (result.message) {
       // Display an alert with message
       window.alert(result.message);
-    } else {
       navigate("/");
     }
+      
   }
   return (
     <>
