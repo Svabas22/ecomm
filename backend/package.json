@@ -9,6 +9,7 @@
     "http": "^0.0.1-security",
     "is-reachable": "^5.2.1",
     "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.6.5"
+    "mysql2": "^3.6.5",
+    "path": "^0.12.7"
   }
 }

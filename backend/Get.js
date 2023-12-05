@@ -7,6 +7,10 @@ const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
+const path = require('path');
+
+
+
 dotenv.config();
 
 const app = express();
@@ -15,6 +19,13 @@ app.use(cors());
 app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+app.get('/*', function (req, res) {
+    res.sendFile(path.join(__dirname, '../frontend/build', 'index.html'));
+});
+
 
 function validate_input(inputString) {
   const specialChars = [
