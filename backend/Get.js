@@ -249,6 +249,26 @@ app.get("/listings", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+app.get("/rlisting", async (req, res) => {
+  const { id } = req.query;
+  
+  if (!id) {
+    return res.status(400).json({ error: "Missing id parameter" });
+  }
+  
+  try {
+    const removeListing = await db.query("DELETE FROM listings WHERE list_id = ?", [id]);
+    if (removeListing[0].affectedRows === 0) {
+      return res.status(404).json({ error: "Listing not found" });
+    }
+    return res.status(200).json({ message: "Listing removed successfully" });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ error: "Internal server error" });
+  }
+});
 app.listen(4321, async () => {
   console.log("listening on 4321");
   if (process.env.STARTED !== null) console.log("Config loaded");

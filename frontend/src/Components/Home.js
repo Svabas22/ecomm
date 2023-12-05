@@ -25,6 +25,16 @@ function Home() {
     fetching();
   }, []);
 
+  function redirect(name,region,price){
+    navigate("/buy", {
+      state: {
+        name: name,
+        region: region,
+        price: price,
+      },
+    })
+  }
+
   TabTitle("Home");
   return (
     <>
@@ -42,13 +52,7 @@ function Home() {
               <div
                 key={index}
                 className="grid"
-                onClick={navigate("/buy", {
-                  state: {
-                    name: item.list_Name,
-                    region: item.list_region,
-                    price: item.list_price,
-                  },
-                })}
+                onClick={redirect()}
               >
                 <div className="row-grid">
                   <img className="grid-icon" src={worldIcon} />
