@@ -16,7 +16,7 @@ function Footer() {
             <div className="footer-col">
               <div className="footer-info">Informacija</div>
               <div className="footer-btn">
-                <a href="http://localhost:3000/about" target="_blank">
+                <a href="/about" target="_blank">
                   Apie
                 </a>
               </div>

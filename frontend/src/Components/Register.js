@@ -29,7 +29,6 @@ function Register() {
       mode: "cors",
     });
     result = await result.json();
-    console.log(result);
     if (result.error) {
       // Display an alert with the error message
       window.alert(result.error);
