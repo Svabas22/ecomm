@@ -240,7 +240,7 @@ app.post("/addlisting", verifyToken, async (req, res) => {
 app.get("/listings", async (req, res) => {
   try {
     const listings = await db.query(
-      "SELECT list_Name, list_price, list_description FROM listings"
+      "SELECT list_Name, list_price, list_description, list_region FROM listings"
     );
     console.log(listings[0]); // Log the data to the console for debugging
     res.status(200).json(listings[0]);

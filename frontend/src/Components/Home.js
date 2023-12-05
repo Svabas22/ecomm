@@ -46,7 +46,7 @@ function Home() {
                   </div>
                   <hr />
                   <div className="row-grid account">
-                    <div className="tier-level">T5 L2</div>
+                    <div className="tier-level">{item.list_region}</div>
                     <div className="grid-price">
                       <div className="price-text">Price</div>
                       <div className="price-num">{item.list_price}</div>
