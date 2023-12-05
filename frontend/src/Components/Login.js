@@ -6,12 +6,12 @@ import { TabTitle } from "../Utilities/TabTitle.js";
 
 function Login() {
   TabTitle("Login");
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   async function login() {
-    let item = { email, password };
+    let item = { username, password };
 
     let result = await fetch("/api/login", {
       method: "POST",
@@ -45,11 +45,11 @@ function Login() {
                   <h1>Login</h1>
                 </div>
                 <div className="row-input">
-                  <p>E-mail</p>
+                  <p>Username</p>
                   <input
                     type="text"
-                    placeholder="email"
-                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="username"
+                    onChange={(e) => setUsername(e.target.value)}
                     className="form-control"
                   />
                 </div>
