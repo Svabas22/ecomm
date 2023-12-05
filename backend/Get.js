@@ -130,7 +130,7 @@ app.post("/register", async (req, res) => {
       );
 
       const token = jwt.sign(
-        { id: adduser[0].insertId },
+        { id: adduser[0].insertId, username: username },
         process.env.JWT_SECRET,
         { expiresIn: "1h" }
       ); // Create JWT token
@@ -171,7 +171,7 @@ app.post("/login", async (req, res) => {
     const user = existingUsers[0][0];
     const passwordMatch = await bcrypt.compare(password, user.users_password);
     if (passwordMatch) {
-      const token = jwt.sign({ id: user.users_id }, process.env.JWT_SECRET, {
+      const token = jwt.sign({ id: user.users_id, username: username  }, process.env.JWT_SECRET, {
         expiresIn: "1h",
       }); // Create JWT token
       res.cookie("token", token);

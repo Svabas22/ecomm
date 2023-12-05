@@ -4,12 +4,17 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.jpg";
+import Cookies from "js-cookie";
+import {decode as base64_decode} from 'base-64';
 function Header() {
-  let user = JSON.parse(localStorage.getItem("user-info"));
+  const token = Cookies.get("token");
+  const array = token.split('.');
+  let user= base64_decode(array[1])['username'];
+  console.log(user)
   const navigate = useNavigate();
   function logOut() {
-    localStorage.clear();
-    navigate("/register");
+    //expirecookie
+    navigate("/login");
   }
 
   return (
@@ -24,7 +29,7 @@ function Header() {
             </div>
             <Nav>
               <div className="navbar-buttons">
-                {localStorage.getItem("user-info") ? (
+                {user!=="" ? (
                   // If user is logged in
                   <>
                     <Link to="/buy">
@@ -47,9 +52,9 @@ function Header() {
                 )}
               </div>
             </Nav>
-            {localStorage.getItem("user-info") ? (
+            {user !== "" ? (
               <Nav>
-                <NavDropdown title={user && user.name}>
+                <NavDropdown title={user}>
                   <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
