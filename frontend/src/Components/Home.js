@@ -7,12 +7,12 @@ import { json } from "react-router-dom";
 import search_logo from "../Images/search_logo.png";
 
 function Home() {
-  const [gridData, setGridData] = useState(null);
+  const [gridData, setGridData] = useState([]);
   useEffect(() => {
     const fetching = async () => {
       try {
         const data = await axios.get("/api/listings").then((response) => {
-          return JSON.parse(response);
+          return response.data;
         });
         console.log(data)
         setGridData(data); // Set the entire array, not just the first element
