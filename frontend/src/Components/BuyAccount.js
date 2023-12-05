@@ -1,12 +1,10 @@
 import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
 import React, { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 function BuyAccount(props) {
   TabTitle("Purchase");
-  const { index } = useParams();
-  const selectedItem = props.gridData[parseInt(index, 10)];
-  const { list_Name, list_region, list_price } = selectedItem;
+  const location = useLocation();
   const [showMore, setShowMore] = useState(false);
   const text =
     "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
@@ -16,7 +14,7 @@ function BuyAccount(props) {
       <div className="body">
         <div className="wrapper">
           <div className="main-title">
-            <h1>{list_Name}</h1>
+            <h1>{location.state.name}</h1>
           </div>
           <div className="box a">
             <div className="content-wrapper">
@@ -29,8 +27,8 @@ function BuyAccount(props) {
               <div className="row offer">
                 <hr />
                 <p>
-                  This is a {list_price} eur offer for {list_region} region.{" "}
-                  <br />
+                  This is a {location.state.price} eur offer for{" "}
+                  {location.state.region} region. <br />
                   <p>
                     {showMore ? text : `${text.substring(0, 81)}`}
                     <button
@@ -55,7 +53,7 @@ function BuyAccount(props) {
                   <h6>Total price</h6>
                 </div>
                 <div className="price count">
-                  <h6>{list_price} eur</h6>
+                  <h6>{location.state.price} eur</h6>
                   <hr />
                 </div>
               </div>

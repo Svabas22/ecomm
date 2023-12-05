@@ -6,7 +6,9 @@ import axios from "axios";
 import { json } from "react-router-dom";
 import search_logo from "../Images/search_logo.png";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Home() {
+  const navigate = useNavigate();
   const [gridData, setGridData] = useState([]);
   useEffect(() => {
     const fetching = async () => {
@@ -40,13 +42,13 @@ function Home() {
               <div
                 key={index}
                 className="grid"
-                onClick={
-                  <Link
-                    to={`/buy/${index}`}
-                    key={index}
-                    className="grid-link"
-                  ></Link>
-                }
+                onClick={navigate("/buy", {
+                  state: {
+                    name: item.list_Name,
+                    region: item.list_region,
+                    price: item.list_price,
+                  },
+                })}
               >
                 <div className="row-grid">
                   <img className="grid-icon" src={worldIcon} />
