@@ -6,7 +6,7 @@ const Protected = ({ children }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = Cookies.get("token"); // Assuming you store the token in localStorage
+    const token = Cookies.get("token");
     console.log(token);
     if (!token) {
       // Redirect to login if no token is found
