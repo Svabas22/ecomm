@@ -7,12 +7,38 @@ const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require('path');
-
+const express = require('express');
+const prometheus = require('prom-client');
 
 
 dotenv.config();
 
 const app = express();
+const port = 3001; // Update this to the port your backend is running on
+
+// Create a custom metric
+const customMetric = new prometheus.Gauge({
+  name: 'custom_metric',
+  help: 'Description of the custom metric',
+});
+
+// Endpoint to increment the custom metric
+app.get('/increment-metric', (req, res) => {
+  customMetric.inc();
+  res.send('Metric incremented');
+});
+
+// Endpoint to expose Prometheus metrics
+app.get('/metrics', (req, res) => {
+  res.set('Content-Type', prometheus.register.contentType);
+  res.end(prometheus.register.metrics());
+});
+
+// Your existing routes and logic go here
+
+app.listen(port, () => {
+  console.log(`Backend listening at http://localhost:${port}`);
+});
 
 app.use(cors());
 app.use(express.json());
