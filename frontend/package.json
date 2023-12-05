@@ -2,6 +2,7 @@
   "name": "ecomm",
   "version": "0.2.0",
   "private": true,
+  "proxy": "http://localhost:4321",
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
