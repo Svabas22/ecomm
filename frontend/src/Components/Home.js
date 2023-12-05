@@ -52,7 +52,7 @@ function Home() {
               <div
                 key={index}
                 className="grid"
-                onClick={redirect(item.list_Name,item.list_region,item.list_price,)}
+                onClick={redirect(item.list_Name,item.list_region,item.list_price)}
               >
                 <div className="row-grid">
                   <img className="grid-icon" src={worldIcon} />
