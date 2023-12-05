@@ -93,7 +93,7 @@ const db = mysql
   })
   .promise();
 
-app.post("/api/register", async (req, res) => {
+app.post("/register", async (req, res) => {
   const { body } = req;
 
   if (!body || typeof body !== "object") {
@@ -143,7 +143,7 @@ app.post("/api/register", async (req, res) => {
   }
 });
 
-app.post("/api/login", async (req, res) => {
+app.post("/login", async (req, res) => {
   const { body } = req;
   if (!body || typeof body !== "object") {
     return res.status(400).json({ error: "Invalid request body" });
@@ -184,7 +184,7 @@ app.post("/api/login", async (req, res) => {
   }
 });
 
-app.post("/api/addlisting", verifyToken, async (req, res) => {
+app.post("/addlisting", verifyToken, async (req, res) => {
   const { body } = req;
 
   if (!body || typeof body !== "object") {
@@ -237,7 +237,7 @@ app.post("/api/addlisting", verifyToken, async (req, res) => {
   }
 });
 
-app.get("/api/listings", async (req, res) => {
+app.get("/listings", async (req, res) => {
   try {
     const listings = await db.query(
       "SELECT list_Name, list_price, list_description FROM listings"
