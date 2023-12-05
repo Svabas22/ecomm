@@ -12,7 +12,7 @@ function Home() {
     const fetching = async () => {
       try {
         const data = await axios.get("/api/listings").then((response) => {
-          return response.data;
+          return json.parse(response.data);
         });
         setGridData(data); // Set the entire array, not just the first element
       } catch (error) {
@@ -35,9 +35,7 @@ function Home() {
             </div>
           </div>
           <div className="grid-wrapper">
-            {console.log("Type of gridData:", typeof gridData) &&
-              gridData &&
-              gridData.map((item, index) => (
+            {gridData.map((item, index) => (
                 <div key={index} className="grid">
                   <div className="row-grid">
                     <img className="grid-icon" src={worldIcon} />
