@@ -12,9 +12,9 @@ function Home() {
     const fetching = async () => {
       try {
         const data = await axios.get("/api/listings").then((response) => {
-          return json.parse(response.data);
+          return JSON.parse(response);
         });
-        console.log(typeof(data))
+        console.log(data)
         setGridData(data); // Set the entire array, not just the first element
       } catch (error) {
         console.error("Error fetching data:", error);
