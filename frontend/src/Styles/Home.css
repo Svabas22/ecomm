@@ -108,7 +108,6 @@
 
 .search {
     display: flex;
-
     align-items: center;
     justify-content: center;
     width: 100%;
@@ -116,8 +115,6 @@
     margin-top: 50px;
     padding: 1%;
     border-radius: 20px;
-    border: 1px solid red;
-
     }
     
     .search-input {
@@ -142,7 +139,6 @@
     }
   
     .search-input-icon{
-      background-color: #f83939;
       border-radius: 50px;
       height: 40px;
       width: 40px;

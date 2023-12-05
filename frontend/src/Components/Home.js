@@ -5,7 +5,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { json } from "react-router-dom";
 import search_logo from "../Images/search_logo.png";
-
+import { Link } from "react-router-dom";
 function Home() {
   const [gridData, setGridData] = useState([]);
   useEffect(() => {
@@ -14,7 +14,7 @@ function Home() {
         const data = await axios.get("/api/listings").then((response) => {
           return response.data;
         });
-        console.log(data)
+        console.log(data);
         setGridData(data); // Set the entire array, not just the first element
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -37,24 +37,34 @@ function Home() {
           </div>
           <div className="grid-wrapper">
             {gridData.map((item, index) => (
-                <div key={index} className="grid">
-                  <div className="row-grid">
-                    <img className="grid-icon" src={worldIcon} />
-                    <div className="grid-title">
-                      <h6>{item.list_Name}</h6>
-                    </div>
-                  </div>
-                  <hr />
-                  <div className="row-grid account">
-                    <div className="tier-level">{item.list_region}</div>
-                    <div className="grid-price">
-                      <div className="price-text">Price</div>
-                      <div className="price-num">{item.list_price}</div>
-                      <div className="price-currency">EUR</div>
-                    </div>
+              <div
+                key={index}
+                className="grid"
+                onClick={
+                  <Link
+                    to={`/buy?name=${item.list_Name}&region=${item.list_region}&price=${item.list_price}`}
+                  >
+                    Home
+                  </Link>
+                }
+              >
+                <div className="row-grid">
+                  <img className="grid-icon" src={worldIcon} />
+                  <div className="grid-title">
+                    <h6>{item.list_Name}</h6>
                   </div>
                 </div>
-              ))}
+                <hr />
+                <div className="row-grid account">
+                  <div className="tier-level">{item.list_region}</div>
+                  <div className="grid-price">
+                    <div className="price-text">Price</div>
+                    <div className="price-num">{item.list_price}</div>
+                    <div className="price-currency">EUR</div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

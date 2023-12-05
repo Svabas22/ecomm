@@ -1,8 +1,9 @@
 import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
 import React, { useState } from "react";
-function BuyAccount() {
+function BuyAccount(props) {
   TabTitle("Purchase");
+  const { name, region, price } = props.match.params;
   const [showMore, setShowMore] = useState(false);
   const text =
     "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
@@ -12,7 +13,7 @@ function BuyAccount() {
       <div className="body">
         <div className="wrapper">
           <div className="main-title">
-            <h1>10250RP</h1>
+            <h1>{name}</h1>
           </div>
           <div className="box a">
             <div className="content-wrapper">
@@ -25,7 +26,7 @@ function BuyAccount() {
               <div className="row offer">
                 <hr />
                 <p>
-                  This is 10250RP offer <br />
+                  This is a {price} eur offer for {region} region. <br />
                   <p>
                     {showMore ? text : `${text.substring(0, 81)}`}
                     <button
@@ -50,7 +51,7 @@ function BuyAccount() {
                   <h6>Total price</h6>
                 </div>
                 <div className="price count">
-                  <h6>46 eur</h6>
+                  <h6>{price} eur</h6>
                   <hr />
                 </div>
               </div>
