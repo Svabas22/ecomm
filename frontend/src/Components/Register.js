@@ -33,12 +33,10 @@ function Register() {
     if (result.error) {
       // Display an alert with the error message
       window.alert(result.error);
-    } else if (result.message) {
+    } else {
       // Display an alert with message
       window.alert(result.message);
-    } else {
       navigate("/");
-    }
   }
 
   return (
