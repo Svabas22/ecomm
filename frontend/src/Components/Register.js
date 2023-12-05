@@ -37,6 +37,7 @@ function Register() {
       // Display an alert with message
       window.alert(result.message);
       navigate("/");
+    }
   }
 
   return (
