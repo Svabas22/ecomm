@@ -42,10 +42,10 @@ function Home() {
                 className="grid"
                 onClick={
                   <Link
-                    to={`/buy?name=${item.list_Name}&region=${item.list_region}&price=${item.list_price}`}
-                  >
-                    Home
-                  </Link>
+                    to={`/buy/${index}`}
+                    key={index}
+                    className="grid-link"
+                  ></Link>
                 }
               >
                 <div className="row-grid">

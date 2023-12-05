@@ -38,7 +38,7 @@ function App() {
             }
           />
           <Route path="/list" element={<AccountList />} />
-          <Route path="/buy" element={<BuyAccount />} />
+          <Route path="/buy/:index" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />
@@ -48,5 +48,3 @@ function App() {
 }
 
 export default App;
-
-/*<Protected Cmp={a component} /> */
