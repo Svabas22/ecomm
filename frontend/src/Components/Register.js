@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom"; // NOT useHistory
 import Header from "./Header.js";
 import { Link } from "react-router-dom";
 import { TabTitle } from "../Utilities/TabTitle.js";
+import Cookies from "js-cookie";
 
 function Register() {
   TabTitle("Register");
   useEffect(() => {
-    if (localStorage.getItem("user-info")) {
+    if (Cookies.get("token")) {
       navigate("/add");
     }
   }, []);
