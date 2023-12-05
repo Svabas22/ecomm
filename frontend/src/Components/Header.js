@@ -6,14 +6,24 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.jpg";
 import Cookies from "js-cookie";
 import {decode as base64_decode} from 'base-64';
+
+
+
 function Header() {
   const token = Cookies.get("token");
-  const array = token.split('.');
-  let user= base64_decode(array[1])['username'];
-  console.log(user)
+  let user;
+  if(token){
+    const array = token.split('.');
+    user= JSON.parse(base64_decode(array[1]))['username'];
+    console.log(user)
+  }else{
+    user="";
+  }
+  
   const navigate = useNavigate();
+  
   function logOut() {
-    //expirecookie
+    Cookies.remove('token');
     navigate("/login");
   }
 
