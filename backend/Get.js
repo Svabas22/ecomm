@@ -14,7 +14,9 @@ const prometheus = require('prom-client');
 dotenv.config();
 
 const app = express();
-const port = 3001; // Update this to the port your backend is running on
+
+const app = express();
+const port = 4321; // Update this to the port your backend is running on
 
 // Create a custom metric
 const customMetric = new prometheus.Gauge({
@@ -32,12 +34,6 @@ app.get('/increment-metric', (req, res) => {
 app.get('/metrics', (req, res) => {
   res.set('Content-Type', prometheus.register.contentType);
   res.end(prometheus.register.metrics());
-});
-
-// Your existing routes and logic go here
-
-app.listen(port, () => {
-  console.log(`Backend listening at http://localhost:${port}`);
 });
 
 app.use(cors());
