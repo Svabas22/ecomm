@@ -295,28 +295,20 @@ app.post("/rlisting", verifyToken, async (req, res) => {
   if (!list_id) {
     return res.status(400).json({ error: "Missing parameter" });
   }
-  
+  //    const getalluserslistings = await db.query("SELECT list_id, account_username, account_password FROM listings WHERE users_id_for_list = ?",[req.userId]);
   try {
-    const getalluserslistings = await db.query("SELECT list_id, account_username, account_password FROM listings WHERE users_id_for_list = ?",[req.userId]);
-    getalluserslistings = getalluserslistings[0];
-    let exists=false;
-    let userpass=[]
-    getalluserslistings.forEach(element => {
-      if(element['list_id'] === list_id){
-        exists=true;
-        userpass.push(element['account_username'],element['account_password'])
-      }
-    });
-    if(!exists){
-      return res.status(401).json({ error: "Permission denied" });
+    const getlisting = await db.query("SELECT list_id, account_username, account_password, users_id_for_list FROM listings WHERE list_id = ?",[list_id]);
+    const parsed= getlisting[0][0]
+    
+    if(parsed['users_id_for_list']===req.userId){
+      return res.status(401).json({ error: "You can't buy your own accounts" });
     }
-    const removeListing = await db.query("DELETE FROM listings WHERE list_id = ?", [id]);
-    console.log(removeListing)
+    const removeListing = await db.query("DELETE FROM listings WHERE list_id = ?", [list_id]);
     if (removeListing[0].affectedRows === 0) {
       return res.status(404).json({ error: "Listing not found" });
     }
     
-    return res.status(200).json({ message: "Listing removed successfully", username: userpass[0], password: userpass[1] });
+    return res.status(200).json({ message: "Listing removed successfully", username: parsed['account_username'], password: parsed['account_password'] });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });
