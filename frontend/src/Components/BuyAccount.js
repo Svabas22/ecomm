@@ -26,7 +26,7 @@ function BuyAccount() {
           },
           mode: "cors",
         });
-        let parsed= JSON.parse(result.body)[0];
+        let parsed= JSON.parse(result.data)[0];
         console.log(parsed);
         if (parsed.error) {
           // Display an alert with the error message
