@@ -3,7 +3,7 @@ import Header from "./Header.js";
 import React, { useEffect, useState } from "react";
 import { json, useLocation } from "react-router-dom";
 import axios from "axios";
-
+import Cookies from "js-cookie";
 function BuyAccount() {
   TabTitle("Purchase");
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
@@ -16,13 +16,13 @@ function BuyAccount() {
     const handlePurchase = async () => {
       // Make a request to your backend to remove the purchased item from the data
       try {
-        let result = await axios
+        const result = await axios
           .post("/api/rlisting", {
             list_id: list_i,
             headers: {
               "Content-Type": "application/json",
+              Authorization: `Bearer ${Cookies.get("token")}`,
             },
-            withCredentials: true,
           })
           .then((response) => {
             return response.data;
