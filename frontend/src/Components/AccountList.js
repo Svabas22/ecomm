@@ -25,7 +25,7 @@ function AccountList() {
                   key={index}
                   className="grid"
                   onClick={() =>
-                    removeelisting();
+                    removeelisting()
                   }
                 >
                   <div className="row-grid">
