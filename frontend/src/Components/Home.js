@@ -28,6 +28,7 @@ function Home() {
   function redirect(index, name, region, price) {
     navigate(`/buy/${index}`, {
       state: {
+        index: index,
         name: name,
         region: region,
         price: price,

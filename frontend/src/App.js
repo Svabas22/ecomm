@@ -6,6 +6,7 @@ import "./Styles/Register.css";
 import "./Styles/Login.css";
 import "./Styles/Header.css";
 import "./Styles/AddProduct.css";
+import "./Styles/AccountList.css";
 import "./Styles/Footer.css";
 import "./Styles/Fonts/Font.css";
 import { Button } from "react-bootstrap";

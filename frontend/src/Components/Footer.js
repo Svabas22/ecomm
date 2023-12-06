@@ -14,10 +14,10 @@ function Footer() {
         <div className="footer">
           <div className="footer-row">
             <div className="footer-col">
-              <div className="footer-info">Informacija</div>
+              <div className="footer-info">Information</div>
               <div className="footer-btn">
                 <a href="/about" target="_blank">
-                  Apie
+                  About
                 </a>
               </div>
             </div>
@@ -27,9 +27,9 @@ function Footer() {
               </div>
             </div>
             <div className="footer-col">
-              <div className="footer-info">Susisiekti</div>
+              <div className="footer-info">Communication</div>
               <div className="footer-btn">
-                <a href="mailto:">Kontaktai</a>
+                <a href="mailto:">Contact</a>
               </div>
             </div>
           </div>

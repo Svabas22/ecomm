@@ -8,7 +8,12 @@ function AccountList() {
       <div className="main">
         <Header />
         <div className="body">
-          <h1>Account list page</h1>
+          <div className="user-name">
+            <h1>Name</h1>
+          </div>
+          <div className="user-list">
+            <h2>List</h2>
+          </div>
         </div>
       </div>
     </>
