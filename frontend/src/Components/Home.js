@@ -47,11 +47,11 @@ function Home() {
               <img src={search_logo}></img>
             </div>
           </div>
-          <div className="grid-wrapper">
-            {gridData.length === 0 ? (
-              <h1>List is empty.</h1>
-            ) : (
-              gridData.map((item, index) => (
+          {gridData.length === 0 ? (
+            <h1>List is empty.</h1>
+          ) : (
+            <div className="grid-wrapper">
+              {gridData.map((item, index) => (
                 <div
                   key={index}
                   className="grid"
@@ -80,9 +80,9 @@ function Home() {
                     </div>
                   </div>
                 </div>
-              ))
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </>
