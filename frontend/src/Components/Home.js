@@ -25,10 +25,10 @@ function Home() {
     fetching();
   }, []);
 
-  function redirect(id, name, region, price) {
+  function redirect(list_id, name, region, price) {
     navigate(`/buy`, {
       state: {
-        id: id,
+        list_id: list_id,
         name: name,
         region: region,
         price: price,
