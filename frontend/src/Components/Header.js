@@ -44,7 +44,7 @@ function Header() {
                       <button className="navbar-buy-btn">Add account</button>
                     </Link>
                     <Link to="/list">
-                      <button className="navbar-list-btn">Add account</button>
+                      <button className="navbar-list-btn">List</button>
                     </Link>
                   </>
                 ) : (
