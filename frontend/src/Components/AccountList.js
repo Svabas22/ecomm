@@ -9,7 +9,7 @@ function AccountList() {
         <Header />
         <div className="body">
           <div className="user-name">
-            <h1>Name</h1>
+            <h1>Accounts</h1>
           </div>
           <div className="user-list">
             <h2>List</h2>

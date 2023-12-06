@@ -34,7 +34,7 @@ function BuyAccount() {
           // Display an alert with message
           setPurchaseSuccess(true);
           window.alert(result.message);
-          window.alert(result.username+result.password);
+          window.alert("Username: "+result.username+" Password: "+result.password);
         }
       } catch (error) {
         // Handle error
