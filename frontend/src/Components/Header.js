@@ -60,8 +60,8 @@ function Header() {
             {user !== "" ? (
               <Nav>
                 <NavDropdown title={user}>
-                  <NavDropdown.Item onClick={() => <Link to="/list" />}>
-                    List
+                  <NavDropdown.Item>
+                    <Link to="/list" />
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
