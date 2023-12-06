@@ -43,6 +43,9 @@ function Header() {
                     <Link to="/add">
                       <button className="navbar-buy-btn">Add account</button>
                     </Link>
+                    <Link to="/list">
+                      <button className="navbar-list-btn">Add account</button>
+                    </Link>
                   </>
                 ) : (
                   // If user is not logged in
@@ -60,9 +63,6 @@ function Header() {
             {user !== "" ? (
               <Nav>
                 <NavDropdown title={user}>
-                  <NavDropdown.Item>
-                    <Link to="/list">Account List</Link>
-                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>

@@ -81,7 +81,18 @@
     background-color: #f88b6a;
   }
 
-
+  .navbar-list-btn{
+    color: #f4511e;
+    background-color: #ffffff;
+    border: 1px solid #9d8c87;
+    transition: 0.3s;
+    border-radius: 50px;
+    width: 100px;
+    height: 40px;
+  }
+  .navbar-list-btn:hover{
+    background-color: rgb(241, 229, 229);
+  }
 
  @media only screen and (max-width: 1200px) {
 
