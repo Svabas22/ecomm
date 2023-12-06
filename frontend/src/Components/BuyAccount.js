@@ -8,13 +8,15 @@ function BuyAccount() {
   TabTitle("Purchase");
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const location = useLocation();
+  let list_id=location.state.id;
   const [showMore, setShowMore] = useState(false);
   const text ="It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
   async function execute_buy(){
     const handlePurchase = async () => {
       // Make a request to your backend to remove the purchased item from the data
       try {
-        let item = {list_id:location.state.id};
+        let item = {list_id};
+        console.log("list is:"+list_id);
         let result = await fetch("/api/rlisting", {
           method: "POST",
           body: JSON.stringify(item),
@@ -24,6 +26,7 @@ function BuyAccount() {
           },
           mode: "cors",
         });
+        console.log(result)
         if (result.error) {
           // Display an alert with the error message
           window.alert(result.error);
