@@ -4,7 +4,6 @@ import Header from "./Header.js";
 import { Link } from "react-router-dom";
 import { TabTitle } from "../Utilities/TabTitle.js";
 
-
 function Login() {
   TabTitle("Login");
   const [username, setUsername] = useState("");
@@ -13,7 +12,6 @@ function Login() {
 
   async function login() {
     let item = { username, password };
-
     let result = await fetch("/api/login", {
       method: "POST",
       headers: {
@@ -31,7 +29,6 @@ function Login() {
       window.alert(result.message);
       navigate("/");
     }
-      
   }
   return (
     <>

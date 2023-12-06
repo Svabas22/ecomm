@@ -8,30 +8,38 @@ function BuyAccount() {
   TabTitle("Purchase");
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const location = useLocation();
-  let list_i=location.state.list_id;
+  let list_i = location.state.list_id;
   const [showMore, setShowMore] = useState(false);
-  const text ="It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
-  async function execute_buy(){
+  const text =
+    "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
+  async function execute_buy() {
     const handlePurchase = async () => {
       // Make a request to your backend to remove the purchased item from the data
       try {
-        let result = await axios.post("/api/rlisting", {
-          
-          list_id: list_i,
-          headers: {
-            'Content-Type': 'application/json'
-          },
-        }).then((response) => {
-          return response.data;
-        });
+        let result = await axios
+          .post("/api/rlisting", {
+            list_id: list_i,
+            headers: {
+              "Content-Type": "application/json",
+            },
+            withCredentials: true,
+          })
+          .then((response) => {
+            return response.data;
+          });
         console.log(result);
-        if (result['error']) {
+        if (result["error"]) {
           // Display an alert with the error message
-          window.alert(result['error']);
+          window.alert(result["error"]);
         } else {
           // Display an alert with message
           setPurchaseSuccess(true);
-          window.alert("Username: "+result['username']+" Password: "+result['password']);
+          window.alert(
+            "Username: " +
+              result["username"] +
+              " Password: " +
+              result["password"]
+          );
         }
       } catch (error) {
         // Handle error
@@ -40,7 +48,6 @@ function BuyAccount() {
     };
     handlePurchase();
   }
-
 
   return (
     <>
@@ -97,7 +104,12 @@ function BuyAccount() {
                 </div>
               ) : (
                 <div className="row-btn">
-                  <button className="buy-btn" onClick={() =>{ execute_buy()}}>
+                  <button
+                    className="buy-btn"
+                    onClick={() => {
+                      execute_buy();
+                    }}
+                  >
                     <span>Buy now</span>
                   </button>
                 </div>
