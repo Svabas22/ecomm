@@ -150,4 +150,8 @@
     .search-input-icon:hover{
       opacity: 0.8;
     }
+
+    .empty-msg{
+        margin-top: 50px;
+    }
     

@@ -42,7 +42,11 @@ function Home() {
         <Header />
         <div className="body">
           {gridData.length === 0 ? (
-            <h1>List is empty.</h1>
+            <>
+              <div className="empty-msg">
+                <h1>List is empty.</h1>
+              </div>
+            </>
           ) : (
             <>
               <div className="search">
