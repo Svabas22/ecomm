@@ -16,7 +16,7 @@ function BuyAccount() {
       // Make a request to your backend to remove the purchased item from the data
       try {
         let item = {list_id};
-        console.log("list is:"+list_id);
+        console.log("list is:"+location.state);
         let result = await fetch("/api/rlisting", {
           method: "POST",
           body: JSON.stringify(item),
