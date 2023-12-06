@@ -309,8 +309,10 @@ app.post("/rlisting", verifyToken, async (req, res) => {
     const parsed = getlisting[0][0];
 
     if (parsed["users_id_for_list"] === req.userId) {
-      window.alert("You can't buy your own accounts");
-      return res.status(401).json({ error: "You can't buy your own accounts" });
+      return (
+        window.alert("You can't buy your own accounts"),
+        res.status(401).json({ error: "You can't buy your own accounts" })
+      );
     }
     const removeListing = await db.query(
       "DELETE FROM listings WHERE list_id = ?",
