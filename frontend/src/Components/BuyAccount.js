@@ -16,8 +16,7 @@ function BuyAccount() {
       // Make a request to your backend to remove the purchased item from the data
       try {
         let item = {list_id};
-        console.log("list is:"+location.state.list_id);
-        let result = await fetch("/api/rlisting", {
+        let result = await axios("/api/rlisting", {
           method: "POST",
           body: JSON.stringify(item),
           headers: {
@@ -25,16 +24,17 @@ function BuyAccount() {
             Accept: "application/json",
           },
           mode: "cors",
+        }).then((response) => {
+          return response.data;
         });
-        let parsed= JSON.parse(result.data)[0];
-        console.log(parsed);
-        if (parsed.error) {
+        console.log(result);
+        if (result['error']) {
           // Display an alert with the error message
-          window.alert(parsed.error);
+          window.alert(result.error);
         } else {
           // Display an alert with message
           setPurchaseSuccess(true);
-          window.alert("Username: "+parsed.username+" Password: "+parsed.password);
+          window.alert("Username: "+result['username']+" Password: "+result['password']);
         }
       } catch (error) {
         // Handle error
