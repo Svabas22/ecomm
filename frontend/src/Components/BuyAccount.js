@@ -1,7 +1,7 @@
 import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { json, useLocation } from "react-router-dom";
 import axios from "axios";
 
 function BuyAccount() {
@@ -26,15 +26,15 @@ function BuyAccount() {
           },
           mode: "cors",
         });
-        console.log(result)
-        if (result.error) {
+        let parsed= JSON.parse(result)[0];
+        console.log(parsed);
+        if (parsed.error) {
           // Display an alert with the error message
-          window.alert(result.error);
+          window.alert(parsed.error);
         } else {
           // Display an alert with message
           setPurchaseSuccess(true);
-          window.alert(result.message);
-          window.alert("Username: "+result.username+" Password: "+result.password);
+          window.alert("Username: "+parsed.username+" Password: "+parsed.password);
         }
       } catch (error) {
         // Handle error
