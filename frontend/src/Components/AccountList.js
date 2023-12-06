@@ -19,12 +19,12 @@ function AccountList() {
 
     fetchUserListings();
   }, []); // Empty dependency array means this effect runs once when the component mounts
-  /*async function removeelisting() {
+  async function removeelisting() {
     let data = await axios.get("/api/listuser").then((response) => {
       return response.data;
     });
     setGridData(data);
-  }*/
+  }
   TabTitle("Account List");
   return (
     <>
