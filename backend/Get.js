@@ -6,10 +6,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-const path = require('path');
-const prometheus = require('prom-client');
+const path = require("path");
+const prometheus = require("prom-client");
 const { get } = require("http");
-
 
 dotenv.config();
 
@@ -18,19 +17,19 @@ const port = process.env.BACKENDPORT; // Update this to the port your backend is
 
 // Create a custom metric
 const customMetric = new prometheus.Gauge({
-  name: 'custom_metric',
-  help: 'Description of the custom metric',
+  name: "custom_metric",
+  help: "Description of the custom metric",
 });
 
 // Endpoint to increment the custom metric
-app.get('/increment-metric', (req, res) => {
+app.get("/increment-metric", (req, res) => {
   customMetric.inc();
-  res.send('Metric incremented');
+  res.send("Metric incremented");
 });
 
 // Endpoint to expose Prometheus metrics
-app.get('/metrics', (req, res) => {
-  res.set('Content-Type', prometheus.register.contentType);
+app.get("/metrics", (req, res) => {
+  res.set("Content-Type", prometheus.register.contentType);
   res.end(prometheus.register.metrics());
 });
 
@@ -83,6 +82,7 @@ function verifyToken(req, res, next) {
   const token = req.cookies["token"];
 
   if (!token) {
+    console.log("No token found");
     return res.status(401).json({ auth: false, message: "Not Allowed" });
   }
 
@@ -103,13 +103,15 @@ function verifyToken(req, res, next) {
 }
 
 // database setup
-const db = mysql.createPool({
+const db = mysql
+  .createPool({
     host: process.env.URL,
     port: process.env.SQL_PORT,
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
     database: "mydb",
-  }).promise();
+  })
+  .promise();
 
 app.post("/register", async (req, res) => {
   const { body } = req;
@@ -189,9 +191,13 @@ app.post("/login", async (req, res) => {
     const user = existingUsers[0][0];
     const passwordMatch = await bcrypt.compare(password, user.users_password);
     if (passwordMatch) {
-      const token = jwt.sign({ id: user.users_id, username: username  }, process.env.JWT_SECRET, {
-        expiresIn: "1h",
-      }); // Create JWT token
+      const token = jwt.sign(
+        { id: user.users_id, username: username },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "1h",
+        }
+      ); // Create JWT token
       res.cookie("token", token);
       return res.status(200).json({ message: "Sucess" });
     } else {
@@ -268,10 +274,11 @@ app.get("/listings", async (req, res) => {
   }
 });
 
-app.get("/listuser",verifyToken, async (req, res) => {
+app.get("/listuser", verifyToken, async (req, res) => {
   try {
     const listings = await db.query(
-      "SELECT list_Name, list_price, list_description, list_region, list_id FROM listings WHERE users_id_for_list = ?",[req.userId]
+      "SELECT list_Name, list_price, list_description, list_region, list_id FROM listings WHERE users_id_for_list = ?",
+      [req.userId]
     );
     console.log(listings[0]); // Log the data to the console for debugging
     res.status(200).json(listings[0]);
@@ -279,7 +286,6 @@ app.get("/listuser",verifyToken, async (req, res) => {
     console.error("Error fetching listings:", error);
     res.status(500).json({ error: "Internal server error" });
   }
-
 });
 
 app.post("/rlisting", verifyToken, async (req, res) => {
@@ -291,24 +297,35 @@ app.post("/rlisting", verifyToken, async (req, res) => {
 
   const list_id = body.list_id;
 
-  
   if (!list_id) {
     return res.status(400).json({ error: "Missing parameter" });
   }
   //    const getalluserslistings = await db.query("SELECT list_id, account_username, account_password FROM listings WHERE users_id_for_list = ?",[req.userId]);
   try {
-    const getlisting = await db.query("SELECT list_id, account_username, account_password, users_id_for_list FROM listings WHERE list_id = ?",[list_id]);
-    const parsed= getlisting[0][0]
-    
-    if(parsed['users_id_for_list']===req.userId){
+    const getlisting = await db.query(
+      "SELECT list_id, account_username, account_password, users_id_for_list FROM listings WHERE list_id = ?",
+      [list_id]
+    );
+    const parsed = getlisting[0][0];
+
+    if (parsed["users_id_for_list"] === req.userId) {
       return res.status(401).json({ error: "You can't buy your own accounts" });
     }
-    const removeListing = await db.query("DELETE FROM listings WHERE list_id = ?", [list_id]);
+    const removeListing = await db.query(
+      "DELETE FROM listings WHERE list_id = ?",
+      [list_id]
+    );
     if (removeListing[0].affectedRows === 0) {
       return res.status(404).json({ error: "Listing not found" });
     }
-    
-    return res.status(200).json({ message: "Listing removed successfully", username: parsed['account_username'], password: parsed['account_password'] });
+
+    return res
+      .status(200)
+      .json({
+        message: "Listing removed successfully",
+        username: parsed["account_username"],
+        password: parsed["account_password"],
+      });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });

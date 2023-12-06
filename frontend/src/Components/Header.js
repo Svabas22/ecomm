@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.jpg";
 import Cookies from "js-cookie";
 import { decode as base64_decode } from "base-64";
+import AccountList from "./AccountList";
 
 function Header() {
   const token = Cookies.get("token");
@@ -59,6 +60,9 @@ function Header() {
             {user !== "" ? (
               <Nav>
                 <NavDropdown title={user}>
+                  <NavDropdown.Item onClick={<Link to="/list" />}>
+                    Logout
+                  </NavDropdown.Item>
                   <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
