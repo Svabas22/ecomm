@@ -1,7 +1,7 @@
 import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import worldIcon from "../Images/world_icon.jpg";
 
 function AccountList() {
