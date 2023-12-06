@@ -309,6 +309,7 @@ app.post("/rlisting", verifyToken, async (req, res) => {
     const parsed = getlisting[0][0];
 
     if (parsed["users_id_for_list"] === req.userId) {
+      window.alert("You can't buy your own accounts");
       return res.status(401).json({ error: "You can't buy your own accounts" });
     }
     const removeListing = await db.query(
@@ -319,13 +320,11 @@ app.post("/rlisting", verifyToken, async (req, res) => {
       return res.status(404).json({ error: "Listing not found" });
     }
 
-    return res
-      .status(200)
-      .json({
-        message: "Listing removed successfully",
-        username: parsed["account_username"],
-        password: parsed["account_password"],
-      });
+    return res.status(200).json({
+      message: "Listing removed successfully",
+      username: parsed["account_username"],
+      password: parsed["account_password"],
+    });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });
