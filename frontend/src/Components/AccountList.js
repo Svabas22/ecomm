@@ -6,14 +6,26 @@ import worldIcon from "../Images/world_icon.jpg";
 
 function AccountList() {
   const [gridData, setGridData] = useState([]);
-  async function removeelisting() {
+  useEffect(() => {
+    // Fetch user's listings when the component mounts
+    async function fetchUserListings() {
+      try {
+        const response = await axios.get("/api/listuser");
+        setGridData(response.data);
+      } catch (error) {
+        console.error("Error fetching user listings:", error);
+      }
+    }
+
+    fetchUserListings();
+  }, []); // Empty dependency array means this effect runs once when the component mounts
+  /*async function removeelisting() {
     let data = await axios.get("/api/listuser").then((response) => {
       return response.data;
     });
     setGridData(data);
-  }
+  }*/
   TabTitle("Account List");
-
   return (
     <>
       <div className="main">
