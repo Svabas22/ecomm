@@ -6,8 +6,6 @@ import axios from "axios";
 import Cookies from "js-cookie";
 function BuyAccount() {
   TabTitle("Purchase");
-  const token = Cookies.get("token");
-  console.log("Token:", token);
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const location = useLocation();
   let list_i = location.state.list_id;
@@ -18,6 +16,8 @@ function BuyAccount() {
     const handlePurchase = async () => {
       // Make a request to your backend to remove the purchased item from the data
       try {
+        const token = Cookies.get("token");
+        console.log("Token:", token);
         const result = await axios
           .post("/api/rlisting", {
             list_id: list_i,
