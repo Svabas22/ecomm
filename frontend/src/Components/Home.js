@@ -25,10 +25,10 @@ function Home() {
     fetching();
   }, []);
 
-  function redirect(index, name, region, price) {
-    navigate(`/buy/${index}`, {
+  function redirect(id, name, region, price) {
+    navigate(`/buy`, {
       state: {
-        index: index,
+        id: id,
         name: name,
         region: region,
         price: price,
@@ -55,7 +55,7 @@ function Home() {
                 className="grid"
                 onClick={() =>
                   redirect(
-                    index,
+                    item.id,
                     item.list_Name,
                     item.list_region,
                     item.list_price

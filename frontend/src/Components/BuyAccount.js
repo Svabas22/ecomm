@@ -4,50 +4,46 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
-function BuyAccount(props) {
+function BuyAccount() {
   TabTitle("Purchase");
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
-  const handleBuyNow = async () => {
-    // Make a request to your backend to add the listing to the user's account
-    // You might want to use axios or fetch here
-    try {
-      await axios.post("/addlisting", {
-        name: location.state.name,
-        region: location.state.region,
-        price: location.state.price,
-      });
-      setPurchaseSuccess(true);
-    } catch (error) {
-      // Handle error
-      console.error("Error adding listing:", error);
-    }
-  };
-  useEffect(() => {
-    const handlePurchase = async () => {
-      // Make a request to your backend to remove the purchased item from the data
-      try {
-        let item = location.state.index;
-        let result = await fetch("/api/rlisting", {
-          method: "POST",
-          body: JSON.stringify(item),
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          mode: "cors",
-        });
-      } catch (error) {
-        // Handle error
-        console.error("Error removing listing:", error);
-      }
-    };
-
-    handlePurchase(); // Immediately call the async function
-  }, [purchaseSuccess, location.state.id]);
   const location = useLocation();
   const [showMore, setShowMore] = useState(false);
-  const text =
-    "It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
+  const text ="It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
+  async function execute_buy(){
+    useEffect(() => {
+      const handlePurchase = async () => {
+        // Make a request to your backend to remove the purchased item from the data
+        try {
+          let item = {id:location.state.id};
+          let result = await fetch("/api/rlisting", {
+            method: "POST",
+            body: JSON.stringify(item),
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "application/json",
+            },
+            mode: "cors",
+          });
+          if (result.error) {
+            // Display an alert with the error message
+            window.alert(result.error);
+          } else {
+            // Display an alert with message
+            setPurchaseSuccess(true);
+            window.alert(result.message);
+            window.alert(result.username+result.password);
+          }
+        } catch (error) {
+          // Handle error
+          console.error("Error removing listing:", error);
+        }
+      };
+      handlePurchase();
+    }, [purchaseSuccess, location.state.id]);
+  }
+
+
   return (
     <>
       <Header />
@@ -103,7 +99,7 @@ function BuyAccount(props) {
                 </div>
               ) : (
                 <div className="row-btn">
-                  <button className="buy-btn" onClick={() => handleBuyNow}>
+                  <button className="buy-btn" onClick={() =>{ execute_buy()}}>
                     <span>Buy now</span>
                   </button>
                 </div>

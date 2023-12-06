@@ -21,7 +21,6 @@ import Protected from "./Components/Protected.js";
 import Footer from "./Components/Footer.js";
 import BuyAccount from "./Components/BuyAccount.js";
 import About from "./Components/About.js";
-import CustomSelect from "./Utilities/AddProductSelect.js";
 function App() {
   return (
     <div className="App">
@@ -38,8 +37,14 @@ function App() {
               </Protected>
             }
           />
-          <Route path="/list" element={<AccountList />} />
-          <Route path="/buy/:index" element={<BuyAccount />} />
+          <Route path="/list"
+            element={
+              <Protected>
+                <AccountList />
+              </Protected>
+            } 
+            />
+          <Route path="/buy" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

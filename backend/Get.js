@@ -103,15 +103,13 @@ function verifyToken(req, res, next) {
 }
 
 // database setup
-const db = mysql
-  .createPool({
+const db = mysql.createPool({
     host: process.env.URL,
     port: process.env.SQL_PORT,
     user: process.env.SQL_USERNAME,
     password: process.env.CONNECTION_PASS,
     database: "mydb",
-  })
-  .promise();
+  }).promise();
 
 app.post("/register", async (req, res) => {
   const { body } = req;
@@ -260,7 +258,7 @@ app.post("/addlisting", verifyToken, async (req, res) => {
 app.get("/listings", async (req, res) => {
   try {
     const listings = await db.query(
-      "SELECT list_Name, list_price, list_description, list_region FROM listings"
+      "SELECT list_Name, list_price, list_description, list_region, list_id FROM listings"
     );
     console.log(listings[0]); // Log the data to the console for debugging
     res.status(200).json(listings[0]);
@@ -273,7 +271,7 @@ app.get("/listings", async (req, res) => {
 app.get("/listuser",verifyToken, async (req, res) => {
   try {
     const listings = await db.query(
-      "SELECT list_Name, list_price, list_description, list_region FROM listings WHERE users_id_for_list = ?",[req.userId]
+      "SELECT list_Name, list_price, list_description, list_region, list_id FROM listings WHERE users_id_for_list = ?",[req.userId]
     );
     console.log(listings[0]); // Log the data to the console for debugging
     res.status(200).json(listings[0]);
@@ -299,12 +297,14 @@ app.post("/rlisting", verifyToken, async (req, res) => {
   }
   
   try {
-    const getalluserslistings = await db.query("SELECT list_id FROM listings WHERE users_id_for_list = ?",[req.userId]);
+    const getalluserslistings = await db.query("SELECT list_id, account_username, account_password FROM listings WHERE users_id_for_list = ?",[req.userId]);
     getalluserslistings = getalluserslistings[0];
     let exists=false;
+    let userpass=[]
     getalluserslistings.forEach(element => {
       if(element['list_id'] === list_id){
         exists=true;
+        userpass.push(element['account_username'],element['account_password'])
       }
     });
     if(!exists){
@@ -315,7 +315,8 @@ app.post("/rlisting", verifyToken, async (req, res) => {
     if (removeListing[0].affectedRows === 0) {
       return res.status(404).json({ error: "Listing not found" });
     }
-    return res.status(200).json({ message: "Listing removed successfully" });
+    
+    return res.status(200).json({ message: "Listing removed successfully", username: userpass[0], password: userpass[1] });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ error: "Internal server error" });
