@@ -14,7 +14,7 @@ const { get } = require("http");
 dotenv.config();
 
 const app = express();
-const port = 4321; // Update this to the port your backend is running on
+const port = process.env.BACKENDPORT; // Update this to the port your backend is running on
 
 // Create a custom metric
 const customMetric = new prometheus.Gauge({
@@ -33,8 +33,6 @@ app.get('/metrics', (req, res) => {
   res.set('Content-Type', prometheus.register.contentType);
   res.end(prometheus.register.metrics());
 });
-
-// Your existing routes and logic go here
 
 app.use(cors());
 app.use(express.json());

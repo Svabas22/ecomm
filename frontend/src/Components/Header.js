@@ -5,25 +5,23 @@ import Navbar from "react-bootstrap/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "../Images/logo.jpg";
 import Cookies from "js-cookie";
-import {decode as base64_decode} from 'base-64';
-
-
+import { decode as base64_decode } from "base-64";
 
 function Header() {
   const token = Cookies.get("token");
   let user;
-  if(token){
-    const array = token.split('.');
-    user= JSON.parse(base64_decode(array[1]))['username'];
-    console.log(user)
-  }else{
-    user="";
+  if (token) {
+    const array = token.split(".");
+    user = JSON.parse(base64_decode(array[1]))["username"];
+    console.log(user);
+  } else {
+    user = "";
   }
-  
+
   const navigate = useNavigate();
-  
+
   function logOut() {
-    Cookies.remove('token');
+    Cookies.remove("token");
     navigate("/login");
   }
 
@@ -39,12 +37,9 @@ function Header() {
             </div>
             <Nav>
               <div className="navbar-buttons">
-                {user!=="" ? (
+                {user !== "" ? (
                   // If user is logged in
                   <>
-                    <Link to="/buy">
-                      <button className="navbar-buy-btn">Buy Temp</button>
-                    </Link>
                     <Link to="/add">
                       <button className="navbar-buy-btn">Add account</button>
                     </Link>

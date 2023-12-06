@@ -6,6 +6,7 @@ import "./Styles/Register.css";
 import "./Styles/Login.css";
 import "./Styles/Header.css";
 import "./Styles/AddProduct.css";
+import "./Styles/AccountList.css";
 import "./Styles/Footer.css";
 import "./Styles/Fonts/Font.css";
 import { Button } from "react-bootstrap";
@@ -38,7 +39,7 @@ function App() {
             }
           />
           <Route path="/list" element={<AccountList />} />
-          <Route path="/buy" element={<BuyAccount />} />
+          <Route path="/buy/:index" element={<BuyAccount />} />
           <Route path="/about" element={<About />} />
         </Routes>
         <Footer />

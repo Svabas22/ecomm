@@ -1,9 +1,49 @@
 import { TabTitle } from "../Utilities/TabTitle.js";
 import Header from "./Header.js";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
+
 function BuyAccount(props) {
   TabTitle("Purchase");
+  const [purchaseSuccess, setPurchaseSuccess] = useState(false);
+  const handleBuyNow = async () => {
+    // Make a request to your backend to add the listing to the user's account
+    // You might want to use axios or fetch here
+    try {
+      await axios.post("/addlisting", {
+        name: location.state.name,
+        region: location.state.region,
+        price: location.state.price,
+      });
+      setPurchaseSuccess(true);
+    } catch (error) {
+      // Handle error
+      console.error("Error adding listing:", error);
+    }
+  };
+  useEffect(() => {
+    const handlePurchase = async () => {
+      // Make a request to your backend to remove the purchased item from the data
+      try {
+        let item = location.state.index;
+        let result = await fetch("/api/rlisting", {
+          method: "POST",
+          body: JSON.stringify(item),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          mode: "cors",
+        });
+      } catch (error) {
+        // Handle error
+        console.error("Error removing listing:", error);
+      }
+    };
+
+    handlePurchase(); // Immediately call the async function
+  }, [purchaseSuccess, location.state.id]);
   const location = useLocation();
   const [showMore, setShowMore] = useState(false);
   const text =
@@ -57,11 +97,17 @@ function BuyAccount(props) {
                   <hr />
                 </div>
               </div>
-              <div className="row-btn">
-                <button className="buy-btn">
-                  <span>Buy now</span>
-                </button>
-              </div>
+              {purchaseSuccess ? (
+                <div>
+                  <p>Thank you for your purchase!</p>
+                </div>
+              ) : (
+                <div className="row-btn">
+                  <button className="buy-btn" onClick={() => handleBuyNow}>
+                    <span>Buy now</span>
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
