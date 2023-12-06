@@ -61,7 +61,7 @@ function Header() {
               <Nav>
                 <NavDropdown title={user}>
                   <NavDropdown.Item>
-                    <Link to="/list" />
+                    <Link to="/list">List</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item onClick={logOut}>Logout</NavDropdown.Item>
                 </NavDropdown>
