@@ -8,7 +8,7 @@ function BuyAccount() {
   TabTitle("Purchase");
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const location = useLocation();
-  let list_id=location.state.id;
+  let list_id=location.state.list_id;
   const [showMore, setShowMore] = useState(false);
   const text ="It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
   async function execute_buy(){
@@ -16,7 +16,7 @@ function BuyAccount() {
       // Make a request to your backend to remove the purchased item from the data
       try {
         let item = {list_id};
-        console.log("list is:"+location.state);
+        console.log("list is:"+location.state.list_id);
         let result = await fetch("/api/rlisting", {
           method: "POST",
           body: JSON.stringify(item),
