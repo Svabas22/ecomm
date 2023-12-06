@@ -19,7 +19,6 @@ function Register() {
 
   async function signUp() {
     let item = { username, email, password };
-    console.log(item);
     let result = await fetch("/api/register", {
       method: "POST",
       body: JSON.stringify(item),

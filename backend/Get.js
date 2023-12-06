@@ -7,14 +7,14 @@ const bcrypt = require("bcrypt");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const path = require('path');
-const express = require('express');
 const prometheus = require('prom-client');
+const { get } = require("http");
 
 
 dotenv.config();
 
 const app = express();
-const port = 3001; // Update this to the port your backend is running on
+const port = 4321; // Update this to the port your backend is running on
 
 // Create a custom metric
 const customMetric = new prometheus.Gauge({
@@ -35,10 +35,6 @@ app.get('/metrics', (req, res) => {
 });
 
 // Your existing routes and logic go here
-
-app.listen(port, () => {
-  console.log(`Backend listening at http://localhost:${port}`);
-});
 
 app.use(cors());
 app.use(express.json());
@@ -277,15 +273,34 @@ app.get("/listings", async (req, res) => {
 });
 
 
-app.get("/rlisting", async (req, res) => {
-  const { id } = req.query;
+app.post("/rlisting", verifyToken, async (req, res) => {
+  const { body } = req;
+
+  if (!body || typeof body !== "object") {
+    return res.status(400).json({ error: "Invalid request body" });
+  }
+
+  const list_id = body.list_id;
+
   
-  if (!id) {
-    return res.status(400).json({ error: "Missing id parameter" });
+  if (!list_id) {
+    return res.status(400).json({ error: "Missing parameter" });
   }
   
   try {
+    const getalluserslistings = await db.query("SELECT list_id FROM listings WHERE users_id_for_list = ?",[req.userId]);
+    getalluserslistings = getalluserslistings[0];
+    let exists=false;
+    getalluserslistings.forEach(element => {
+      if(element['list_id'] === list_id){
+        exists=true;
+      }
+    });
+    if(!exists){
+      return res.status(401).json({ error: "Permission denied" });
+    }
     const removeListing = await db.query("DELETE FROM listings WHERE list_id = ?", [id]);
+    console.log(removeListing)
     if (removeListing[0].affectedRows === 0) {
       return res.status(404).json({ error: "Listing not found" });
     }
