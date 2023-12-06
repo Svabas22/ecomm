@@ -270,6 +270,19 @@ app.get("/listings", async (req, res) => {
   }
 });
 
+app.get("/listuser",async, async (req, res) => {
+  try {
+    const listings = await db.query(
+      "SELECT list_Name, list_price, list_description, list_region FROM listings WHERE users_id_for_list = ?",[req.userId]
+    );
+    console.log(listings[0]); // Log the data to the console for debugging
+    res.status(200).json(listings[0]);
+  } catch (error) {
+    console.error("Error fetching listings:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+
+});
 
 app.post("/rlisting", verifyToken, async (req, res) => {
   const { body } = req;
