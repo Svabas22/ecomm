@@ -55,7 +55,7 @@ function Home() {
                 className="grid"
                 onClick={() =>
                   redirect(
-                    item.id,
+                    item.list_id,
                     item.list_Name,
                     item.list_region,
                     item.list_price
