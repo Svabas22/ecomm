@@ -11,36 +11,34 @@ function BuyAccount() {
   const [showMore, setShowMore] = useState(false);
   const text ="It is necessary to have an active registered account and be logged in to complete any transaction. Please contact us if any help is necessary.";
   async function execute_buy(){
-    useEffect(() => {
-      const handlePurchase = async () => {
-        // Make a request to your backend to remove the purchased item from the data
-        try {
-          let item = {id:location.state.id};
-          let result = await fetch("/api/rlisting", {
-            method: "POST",
-            body: JSON.stringify(item),
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            mode: "cors",
-          });
-          if (result.error) {
-            // Display an alert with the error message
-            window.alert(result.error);
-          } else {
-            // Display an alert with message
-            setPurchaseSuccess(true);
-            window.alert(result.message);
-            window.alert(result.username+result.password);
-          }
-        } catch (error) {
-          // Handle error
-          console.error("Error removing listing:", error);
+    const handlePurchase = async () => {
+      // Make a request to your backend to remove the purchased item from the data
+      try {
+        let item = {id:location.state.id};
+        let result = await fetch("/api/rlisting", {
+          method: "POST",
+          body: JSON.stringify(item),
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          mode: "cors",
+        });
+        if (result.error) {
+          // Display an alert with the error message
+          window.alert(result.error);
+        } else {
+          // Display an alert with message
+          setPurchaseSuccess(true);
+          window.alert(result.message);
+          window.alert(result.username+result.password);
         }
-      };
-      handlePurchase();
-    }, [purchaseSuccess, location.state.id]);
+      } catch (error) {
+        // Handle error
+        console.error("Error removing listing:", error);
+      }
+    };
+    handlePurchase();
   }
 
 
