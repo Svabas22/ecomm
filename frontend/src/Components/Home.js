@@ -10,8 +10,6 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   const [gridData, setGridData] = useState([]);
-  const [searchInput, setSearchInput] = useState("");
-  const [filteredGridData, setFilteredGridData] = useState([]);
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -19,21 +17,12 @@ function Home() {
           return response.data;
         });
         setGridData(data); // Set the entire array, not just the first element
-        setFilteredGridData(data); // Initialize filtered data with all items
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetching();
   }, []);
-
-  useEffect(() => {
-    // Filter grid data based on search input
-    const filteredData = gridData.filter((item) =>
-      item.list_Name.toLowerCase().includes(searchInput.toLowerCase())
-    );
-    setFilteredGridData(filteredData);
-  }, [searchInput, gridData]);
 
   function redirect(list_id, name, region, price) {
     navigate(`/buy`, {
@@ -52,20 +41,16 @@ function Home() {
       <div className="main">
         <Header />
         <div className="body">
-          <div className="search">
-            <input
-              className="search-input"
-              placeholder="Search"
-              value={searchInput}
-              onChange={(e) => setSearchInput(e.target.value)}
-            ></input>
-            <div className="search-input-icon">
-              <img src={search_logo} alt="Search icon"></img>
-            </div>
-          </div>
-          <div className="grid-wrapper">
-            {filteredGridData.length === 0
-              ? gridData.map((item, index) => (
+          {gridData.length === 0 ? (
+            <>
+              <div className="empty-msg">
+                <h1>List is empty.</h1>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className="grid-wrapper">
+                {gridData.map((item, index) => (
                   <div
                     key={index}
                     className="grid"
@@ -78,30 +63,25 @@ function Home() {
                       )
                     }
                   >
-                    {/* ... rest of the grid rendering code ... */}
-                  </div>
-                ))
-              : filteredGridData.map((item, index) => (
-                  <div
-                    key={index}
-                    className="grid"
-                    onClick={() =>
-                      redirect(
-                        item.list_id,
-                        item.list_Name,
-                        item.list_region,
-                        item.list_price
-                      )
-                    }
-                  >
-                    {/* ... rest of the grid rendering code ... */}
+                    <div className="row-grid">
+                      <img className="grid-icon" src={worldIcon} />
+                      <div className="grid-title">
+                        <h6>{item.list_Name}</h6>
+                      </div>
+                    </div>
+                    <hr />
+                    <div className="row-grid account">
+                      <div className="tier-level">{item.list_region}</div>
+                      <div className="grid-price">
+                        <div className="price-text">Price</div>
+                        <div className="price-num">{item.list_price}</div>
+                        <div className="price-currency">EUR</div>
+                      </div>
+                    </div>
                   </div>
                 ))}
-          </div>
-          {filteredGridData.length === 0 && (
-            <div className="empty-msg">
-              <h1>List is empty.</h1>
-            </div>
+              </div>
+            </>
           )}
         </div>
       </div>
