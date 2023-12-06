@@ -6,6 +6,8 @@ import axios from "axios";
 import Cookies from "js-cookie";
 function BuyAccount() {
   TabTitle("Purchase");
+  const token = Cookies.get("token");
+  console.log("Token:", token);
   const [purchaseSuccess, setPurchaseSuccess] = useState(false);
   const location = useLocation();
   let list_i = location.state.list_id;
@@ -21,7 +23,7 @@ function BuyAccount() {
             list_id: list_i,
             headers: {
               "Content-Type": "application/json",
-              Authorization: `Bearer ${Cookies.get("token")}`,
+              Authorization: `Bearer ${token}`,
             },
           })
           .then((response) => {
