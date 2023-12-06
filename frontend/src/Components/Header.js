@@ -13,7 +13,6 @@ function Header() {
   if (token) {
     const array = token.split(".");
     user = JSON.parse(base64_decode(array[1]))["username"];
-    console.log(user);
   } else {
     user = "";
   }

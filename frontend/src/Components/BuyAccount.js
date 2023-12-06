@@ -27,7 +27,7 @@ function BuyAccount() {
         console.log(result);
         if (result['error']) {
           // Display an alert with the error message
-          window.alert(result.error);
+          window.alert(result['error']);
         } else {
           // Display an alert with message
           setPurchaseSuccess(true);

@@ -16,7 +16,6 @@ function Home() {
         const data = await axios.get("/api/listings").then((response) => {
           return response.data;
         });
-        console.log(data);
         setGridData(data); // Set the entire array, not just the first element
       } catch (error) {
         console.error("Error fetching data:", error);
