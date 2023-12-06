@@ -10,6 +10,8 @@ import { useNavigate } from "react-router-dom";
 function Home() {
   const navigate = useNavigate();
   const [gridData, setGridData] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [filteredGridData, setFilteredGridData] = useState([]);
   useEffect(() => {
     const fetching = async () => {
       try {
@@ -17,12 +19,21 @@ function Home() {
           return response.data;
         });
         setGridData(data); // Set the entire array, not just the first element
+        setFilteredGridData(data); // Initialize filtered data with all items
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     };
     fetching();
   }, []);
+
+  useEffect(() => {
+    // Filter grid data based on search input
+    const filteredData = gridData.filter((item) =>
+      item.list_Name.toLowerCase().includes(searchInput.toLowerCase())
+    );
+    setFilteredGridData(filteredData);
+  }, [searchInput, gridData]);
 
   function redirect(list_id, name, region, price) {
     navigate(`/buy`, {
@@ -41,7 +52,7 @@ function Home() {
       <div className="main">
         <Header />
         <div className="body">
-          {gridData.length === 0 ? (
+          {filteredGridData.length === 0 ? (
             <>
               <div className="empty-msg">
                 <h1>List is empty.</h1>
@@ -50,13 +61,18 @@ function Home() {
           ) : (
             <>
               <div className="search">
-                <input className="search-input" placeholder="Search"></input>
+                <input
+                  className="search-input"
+                  placeholder="Search"
+                  value={searchInput}
+                  onChange={(e) => setSearchInput(e.target.value)}
+                ></input>
                 <div className="search-input-icon">
                   <img src={search_logo}></img>
                 </div>
               </div>
               <div className="grid-wrapper">
-                {gridData.map((item, index) => (
+                {filteredGridData.map((item, index) => (
                   <div
                     key={index}
                     className="grid"
